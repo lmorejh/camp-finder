@@ -1,5 +1,7 @@
 # ⛺ camp-finder — 전국 캠핑장 예약 통합 조회
 
+**웹: https://lmorejh.github.io/camp-finder/** · 저장소: https://github.com/lmorejh/camp-finder
+
 전국 국공립·지자체·사설 캠핑장 394곳(포토라이TV 캠핑장 목록 기준)의 **예약 가능 여부를 기간별로 한 화면에서** 확인하는 도구입니다.
 
 - 기간(체크인/체크아웃)을 고르면 **예약 가능한 캠핑장**을 우선 정렬해 보여줍니다.
