@@ -1,4 +1,4 @@
-import { toISO, addDays, nightsBetween, estimatePeriodPrice, sumSitePrice, siteAvailableAll, won, isWeekendNight } from './pricing.js';
+import { toISO, addDays, nightsBetween, estimatePeriodPrice, sumSitePrice, siteAvailableAll, won, isWeekendNight } from './pricing.js?v=20260910c';
 
 const $ = (s) => document.querySelector(s);
 const state = { camps: [], avail: { camps: {} }, live: false, lastLive: null };
