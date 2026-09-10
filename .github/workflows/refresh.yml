@@ -1,0 +1,44 @@
+name: 예약 현황 갱신
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # 30분마다(UTC). 실제 실행은 GitHub 부하에 따라 지연될 수 있음
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: '오늘부터 며칠치 조회'
+        default: '60'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: 캠핑장 목록 재생성
+        run: npm run build:data
+      - name: 예약 현황 수집
+        env:
+          CF_WINDOW_DAYS: ${{ github.event.inputs.window_days || '60' }}
+          CF_CONCURRENCY: '3'
+        run: npm run scrape
+      - name: 커밋 & 푸시
+        run: |
+          git config user.name "camp-finder-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data
+          git diff --cached --quiet && echo "변경 없음" && exit 0
+          git commit -m "chore: 예약 현황 갱신 $(date -u +'%Y-%m-%dT%H:%MZ')"
+          git push

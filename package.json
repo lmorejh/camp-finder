@@ -1,0 +1,17 @@
+{
+  "name": "camp-finder",
+  "version": "0.1.0",
+  "description": "전국 국공립·사설 캠핑장 예약 가능 여부 통합 조회",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:data": "node scripts/build-campsites.mjs",
+    "scrape": "node scraper/run.mjs",
+    "serve": "node scraper/server.mjs",
+    "test": "node --test scripts/"
+  },
+  "dependencies": {
+    "xlsx": "0.18.5"
+  },
+  "engines": { "node": ">=20" }
+}

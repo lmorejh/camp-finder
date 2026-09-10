@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>캠핑장 예약 통합 조회</title>
+<meta name="description" content="전국 국공립·사설 캠핑장 394곳의 예약 가능 여부를 기간별로 한 번에 조회합니다. 사이트별 요금·크기·장단점 표시.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>⛺ 캠핑장 예약 통합 조회</h1>
+    <p class="sub">전국 국공립·사설 캠핑장 <span id="totalCount">-</span>곳 · 기간을 고르면 예약 가능한 캠핑장과 사이트, 기간 요금, 크기, 장단점을 보여줍니다.</p>
+    <p class="meta" id="dataMeta">데이터 불러오는 중…</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="filters" aria-label="검색 조건">
+    <div class="row">
+      <label>체크인 <input type="date" id="checkIn"></label>
+      <label>체크아웃 <input type="date" id="checkOut"></label>
+      <span class="nights" id="nightsLabel"></span>
+      <button id="btnLive" class="primary" hidden>🔄 선택 기간 실시간 조회</button>
+    </div>
+    <div class="row">
+      <label>지역 <select id="province"><option value="">전체</option></select></label>
+      <label>시·군 <select id="city"><option value="">전체</option></select></label>
+      <label>구분 <select id="kind"><option value="">전체</option></select></label>
+      <label>예약 플랫폼 <select id="platform"><option value="">전체</option></select></label>
+      <label>정렬
+        <select id="sort">
+          <option value="status">예약가능 우선</option>
+          <option value="priceAsc">기간 요금 낮은순</option>
+          <option value="priceDesc">기간 요금 높은순</option>
+          <option value="name">이름순</option>
+        </select>
+      </label>
+    </div>
+    <div class="row">
+      <label class="chk"><input type="checkbox" id="onlyAvailable"> 예약 가능한 곳만</label>
+      <label class="chk"><input type="checkbox" id="onlyLive"> 실시간 조회 지원 플랫폼만</label>
+      <label class="chk"><input type="checkbox" id="pet"> 반려견 가능</label>
+      <label class="chk"><input type="checkbox" id="winter"> 동계 운영</label>
+      <label class="grow">검색 <input type="search" id="q" placeholder="캠핑장 이름, 환경(계곡·바다뷰…), 지역"></label>
+    </div>
+  </section>
+
+  <section class="summary" id="summary" aria-live="polite"></section>
+  <section id="results" class="results"></section>
+</main>
+
+<footer class="wrap foot">
+  <p>상태 설명 — <b class="st ok">예약가능</b>: 선택 기간 전체 예약 가능한 사이트가 1개 이상 · <b class="st full">만실</b>: 기간 내 빈 사이트 없음 · <b class="st manual">직접확인</b>: 실시간 조회를 지원하지 않는 예약 방식(홈페이지·카페·전화) · <b class="st err">조회오류</b>: 플랫폼 응답 실패.</p>
+  <p>요금은 각 플랫폼 응답값을 우선 표시하며, 없으면 시트의 주말/주중 요금(금·토·공휴일 전날=주말)으로 추정합니다. 실제 결제 금액과 다를 수 있습니다.</p>
+  <p>원본 목록: 포토라이TV 전국 국공립·지자체 캠핑장 모음 · <a href="https://github.com/" id="repoLink">GitHub 저장소</a></p>
+</footer>
+
+<template id="cardTpl">
+  <article class="card">
+    <div class="card-head">
+      <div>
+        <h2 class="name"></h2>
+        <div class="tags"></div>
+      </div>
+      <div class="right">
+        <span class="status"></span>
+        <div class="price"></div>
+      </div>
+    </div>
+    <div class="pc">
+      <ul class="pros"></ul>
+      <ul class="cons"></ul>
+    </div>
+    <div class="links"></div>
+    <details class="sites">
+      <summary></summary>
+      <div class="sites-body"></div>
+    </details>
+  </article>
+</template>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
