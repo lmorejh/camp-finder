@@ -38,6 +38,11 @@ const parseDate = (v) => {
   return isNaN(d) ? null : d.toISOString().slice(0, 10);
 };
 
+// 예약 URL 보정: data/booking-overrides.json  { "<캠핑장이름>|<시군>": { "url": "...", "note": "..." } }
+// (시트에 '자체홈페이지'처럼 URL이 없거나 틀린 경우 실제 예약 페이지로 대체 → 플랫폼 자동 감지)
+let OVERRIDES = {};
+try { OVERRIDES = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/booking-overrides.json'), 'utf8')); } catch {}
+
 // 헤더 행 찾기
 const headerIdx = rows.findIndex((r) => clean(r[0]) === '캠핑장이름');
 if (headerIdx < 0) throw new Error('헤더 행(캠핑장이름)을 찾지 못했습니다');
@@ -63,7 +68,9 @@ for (let i = headerIdx + 1; i < rows.length; i++) {
   };
   if (!camps.has(key)) {
     const id = 'c' + crypto.createHash('sha1').update(key).digest('hex').slice(0, 8);
-    const bookingRaw = clean(r[9]);
+    const sheetBooking = clean(r[9]);
+    const ov = OVERRIDES[key];
+    const bookingRaw = ov && ov.url ? ov.url : sheetBooking;
     const platform = detectPlatform(bookingRaw);
     camps.set(key, {
       id,
@@ -77,6 +84,8 @@ for (let i = headerIdx + 1; i < rows.length; i++) {
       priceWeekend,
       priceWeekday,
       bookingRaw,
+      sheetBooking,
+      bookingNote: ov?.note || '',
       platform: platform.id,
       platformName: platform.name,
       bookingUrl: platform.url,

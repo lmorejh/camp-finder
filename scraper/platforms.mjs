@@ -4,12 +4,12 @@
 export const PLATFORMS = {
   foresttrip: { name: '숲나들e(국립·공립 자연휴양림)', home: 'https://www.foresttrip.go.kr', live: true },
   knps: { name: '국립공원 예약시스템', home: 'https://reservation.knps.or.kr', live: true },
-  camfit: { name: '캠핏', home: 'https://camfit.co.kr', live: true },
+  camfit: { name: '캠핏(자동조회 차단)', home: 'https://camfit.co.kr', live: false },
   thankq: { name: '땡큐캠핑', home: 'https://m.thankqcamping.com', live: true },
   naver: { name: '네이버 예약', home: 'https://booking.naver.com', live: true },
-  interpark: { name: '인터파크', home: 'https://tickets.interpark.com', live: false },
-  ticketplay: { name: '티켓플레이', home: '', live: false },
-  zapza: { name: '잡자', home: '', live: false },
+  interpark: { name: '인터파크/NOL 티켓', home: 'https://tickets.interpark.com', live: true },
+  ticketplay: { name: '티켓플레이', home: '', live: true },
+  zapza: { name: '잡자', home: '', live: true },
   ddnayo: { name: '떠나요', home: 'https://booking.ddnayo.com', live: false },
   seoul: { name: '서울시 공공서비스예약', home: 'https://yeyak.seoul.go.kr', live: false },
   navercafe: { name: '네이버 카페(수기 예약)', home: '', live: false },
@@ -47,7 +47,10 @@ export function detectPlatform(raw) {
   }
   if (/네이버\s*예약/.test(s) || lower.includes('map.naver.com') || lower.includes('place.naver.com')) return mk('naver');
   if (lower.includes('cafe.naver.com')) return mk('navercafe');
-  if (/인터파크/.test(s) || lower.includes('interpark')) return mk('interpark');
+  if (/인터파크/.test(s) || lower.includes('interpark') || lower.includes('nol.yanolja.com/ticket')) {
+    const m = s.match(/(?:goods|products)\/(\d{6,})/);
+    return mk('interpark', m ? m[1] : '');
+  }
   if (lower.includes('ticketplay.zone')) return mk('ticketplay');
   if (lower.includes('zapza.me')) return mk('zapza');
   if (lower.includes('ddnayo.com')) return mk('ddnayo');

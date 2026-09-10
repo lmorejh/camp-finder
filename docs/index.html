@@ -40,6 +40,7 @@
     </div>
     <div class="row">
       <label class="chk"><input type="checkbox" id="onlyAvailable"> 예약 가능한 곳만</label>
+      <label class="chk"><input type="checkbox" id="hideFull"> 만실 제외</label>
       <label class="chk"><input type="checkbox" id="onlyLive"> 실시간 조회 지원 플랫폼만</label>
       <label class="chk"><input type="checkbox" id="pet"> 반려견 가능</label>
       <label class="chk"><input type="checkbox" id="winter"> 동계 운영</label>
@@ -52,7 +53,7 @@
 </main>
 
 <footer class="wrap foot">
-  <p>상태 설명 — <b class="st ok">예약가능</b>: 선택 기간 전체 예약 가능한 사이트가 1개 이상 · <b class="st full">만실</b>: 기간 내 빈 사이트 없음 · <b class="st manual">직접확인</b>: 실시간 조회를 지원하지 않는 예약 방식(홈페이지·카페·전화) · <b class="st err">조회오류</b>: 플랫폼 응답 실패.</p>
+  <p>상태 설명 — <b class="st ok">예약가능</b>: 선택 기간 전체 예약 가능한 사이트가 1개 이상 · <b class="st full">만실</b>: 기간 내 빈 사이트 없음 · <b class="st manual">직접확인</b>: 온라인 예약은 있으나 자동 조회 미지원 · <b class="st manual">캠핏 차단</b>: 캠핏이 자동 조회를 차단해 링크만 제공 · <b class="st unknown">카페예약·전화예약·현장선착순·운영종료</b>: 온라인 달력 없음 · <b class="st err">조회오류</b>: 플랫폼 응답 실패.</p>
   <p>요금은 각 플랫폼 응답값을 우선 표시하며, 없으면 시트의 주말/주중 요금(금·토·공휴일 전날=주말)으로 추정합니다. 실제 결제 금액과 다를 수 있습니다.</p>
   <p>원본 목록: 포토라이TV 전국 국공립·지자체 캠핑장 모음 · <a href="https://github.com/lmorejh/camp-finder" id="repoLink">GitHub 저장소</a></p>
 </footer>

@@ -59,7 +59,7 @@ function fillCities() {
 }
 
 function bind() {
-  for (const id of ['checkIn', 'checkOut', 'province', 'city', 'kind', 'platform', 'sort', 'onlyAvailable', 'onlyLive', 'pet', 'winter']) {
+  for (const id of ['checkIn', 'checkOut', 'province', 'city', 'kind', 'platform', 'sort', 'onlyAvailable', 'hideFull', 'onlyLive', 'pet', 'winter']) {
     $('#' + id).addEventListener('change', () => {
       if (id === 'province') fillCities();
       if (id === 'checkIn' && $('#checkOut').value <= $('#checkIn').value) $('#checkOut').value = addDays($('#checkIn').value, 1);
@@ -76,10 +76,12 @@ function evaluate(camp, nights) {
   const a = state.avail.camps[camp.id];
   const est = estimatePeriodPrice(camp, nights[0], addDays(nights[nights.length - 1], 1));
   const base = { camp, est, sites: [], availableSites: [], minPrice: null };
-  if (!a || a.status === 'unsupported') return { ...base, status: 'manual' };
+  if (!a || a.status === 'unsupported') return { ...base, status: MANUAL_STATUS[camp.platform] || 'manual' };
   if (a.status === 'error' || a.status === 'unmapped') return { ...base, status: 'err', error: a.error, fetchedAt: a.fetchedAt };
   const win = a.coverage || state.avail.window;
   const inWindow = !win || (nights[0] >= win.from && nights[nights.length - 1] <= win.to);
+  // 플랫폼은 응답했지만 판매 기간 밖 등으로 사이트 정보가 전혀 없는 경우
+  if (!a.campLevel && !a.sites.length) return { ...base, status: 'outside', note: a.note, fetchedAt: a.fetchedAt };
   // 휴양림 단위 잔여 수만 제공되는 플랫폼(숲나들e): 사이트별 O/X 대신 일자별 잔여 수로 판정
   if (a.campLevel) {
     const counts = nights.map((n) => a.campLevel.availableCountByDate[n]);
@@ -112,9 +114,11 @@ function evaluate(camp, nights) {
   };
 }
 
-const STATUS_LABEL = { ok: '예약가능', full: '만실', manual: '직접확인', err: '조회오류', outside: '조회범위 밖' };
-const STATUS_CLASS = { ok: 'ok', full: 'full', manual: 'manual', err: 'err', outside: 'unknown' };
-const STATUS_ORDER = { ok: 0, outside: 1, full: 2, manual: 3, err: 4 };
+// 자동 조회가 불가능한 예약 방식은 이유별로 구분 표시(직접확인 = 온라인 예약은 있으나 어댑터 없음)
+const MANUAL_STATUS = { camfit: 'blocked', navercafe: 'cafe', phone: 'phone', walkin: 'walkin', closed: 'closed' };
+const STATUS_LABEL = { ok: '예약가능', full: '만실', manual: '직접확인', blocked: '캠핏 차단', cafe: '카페예약', phone: '전화예약', walkin: '현장선착순', closed: '운영종료', err: '조회오류', outside: '조회범위 밖' };
+const STATUS_CLASS = { ok: 'ok', full: 'full', manual: 'manual', blocked: 'manual', cafe: 'unknown', phone: 'unknown', walkin: 'unknown', closed: 'unknown', err: 'err', outside: 'unknown' };
+const STATUS_ORDER = { ok: 0, outside: 1, full: 2, manual: 3, blocked: 4, err: 5, cafe: 6, phone: 7, walkin: 8, closed: 9 };
 
 // ---------- 렌더 ----------
 function render() {
@@ -124,7 +128,7 @@ function render() {
   $('#nightsLabel').textContent = nights.length ? `${nights.length}박 · 주말요금 ${nights.filter(isWeekendNight).length}박` : '체크아웃은 체크인 다음날 이후여야 합니다';
   const f = {
     province: $('#province').value, city: $('#city').value, kind: $('#kind').value, platform: $('#platform').value,
-    onlyAvailable: $('#onlyAvailable').checked, onlyLive: $('#onlyLive').checked, pet: $('#pet').checked, winter: $('#winter').checked,
+    onlyAvailable: $('#onlyAvailable').checked, hideFull: $('#hideFull').checked, onlyLive: $('#onlyLive').checked, pet: $('#pet').checked, winter: $('#winter').checked,
     q: $('#q').value.trim().toLowerCase(),
   };
   const liveSet = new Set(state.avail.adapters || []);
@@ -134,8 +138,9 @@ function render() {
     .filter((c) => !f.winter || /동계개장/.test(c.winter))
     .filter((c) => !f.onlyLive || liveSet.has(c.platform))
     .filter((c) => !f.q || [c.name, c.environment, c.province, c.city, c.kind, c.platformName].join(' ').toLowerCase().includes(f.q))
-    .map((c) => (nights.length ? evaluate(c, nights) : { camp: c, status: 'manual', est: null, sites: [], availableSites: [] }));
+    .map((c) => (nights.length ? evaluate(c, nights) : { camp: c, status: MANUAL_STATUS[c.platform] || 'manual', est: null, sites: [], availableSites: [] }));
   if (f.onlyAvailable) rows = rows.filter((r) => r.status === 'ok');
+  if (f.hideFull) rows = rows.filter((r) => r.status !== 'full');
 
   const sort = $('#sort').value;
   const priceOf = (r) => r.minPrice ?? r.est?.total ?? Infinity;
