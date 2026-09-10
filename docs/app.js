@@ -78,8 +78,22 @@ function evaluate(camp, nights) {
   const base = { camp, est, sites: [], availableSites: [], minPrice: null };
   if (!a || a.status === 'unsupported') return { ...base, status: 'manual' };
   if (a.status === 'error' || a.status === 'unmapped') return { ...base, status: 'err', error: a.error, fetchedAt: a.fetchedAt };
-  const win = state.avail.window;
+  const win = a.coverage || state.avail.window;
   const inWindow = !win || (nights[0] >= win.from && nights[nights.length - 1] <= win.to);
+  // 휴양림 단위 잔여 수만 제공되는 플랫폼(숲나들e): 사이트별 O/X 대신 일자별 잔여 수로 판정
+  if (a.campLevel) {
+    const counts = nights.map((n) => a.campLevel.availableCountByDate[n]);
+    const known = counts.every((c) => c != null);
+    const minCount = known ? Math.min(...counts) : null;
+    const sites = a.sites.map((s) => ({ ...s, availableAll: null, price: sumSitePrice(s, nights), perNight: nights.map(() => null) }));
+    const prices = sites.map((s) => s.price).filter((p) => p != null);
+    return {
+      ...base, sites, availableSites: [], campLevel: a.campLevel, minCount, note: a.note,
+      minPrice: prices.length ? Math.min(...prices) : null,
+      status: !known || !inWindow ? 'outside' : minCount > 0 ? 'ok' : 'full',
+      fetchedAt: a.fetchedAt,
+    };
+  }
   const sites = a.sites.map((s) => {
     const availableAll = siteAvailableAll(s, nights);
     const price = sumSitePrice(s, nights);
@@ -91,6 +105,7 @@ function evaluate(camp, nights) {
     ...base,
     sites,
     availableSites,
+    note: a.note,
     minPrice: prices.length ? Math.min(...prices) : null,
     status: !inWindow ? 'outside' : availableSites.length ? 'ok' : 'full',
     fetchedAt: a.fetchedAt,
@@ -156,7 +171,7 @@ function card(r, nights) {
   const liveSet = new Set(state.avail.adapters || []);
   el.querySelector('.tags').innerHTML = tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('') + `<span class="tag ${liveSet.has(c.platform) ? 'live' : ''}">${esc(c.platformName)}${liveSet.has(c.platform) ? ' · 실시간' : ''}</span>`;
   const st = el.querySelector('.status');
-  st.textContent = STATUS_LABEL[r.status] + (r.status === 'ok' ? ` · ${r.availableSites.length}개 사이트` : '');
+  st.textContent = STATUS_LABEL[r.status] + (r.status === 'ok' ? (r.campLevel ? ` · 잔여 ${r.minCount}개↑` : ` · ${r.availableSites.length}개 사이트`) : '');
   st.className = 'status ' + STATUS_CLASS[r.status];
   st.title = r.error || (r.fetchedAt ? '조회 시각 ' + new Date(r.fetchedAt).toLocaleString('ko-KR') : '');
 
@@ -177,8 +192,10 @@ function card(r, nights) {
 
   const det = el.querySelector('.sites');
   if (r.sites.length) {
-    det.querySelector('summary').textContent = `사이트 ${r.sites.length}개 보기 (예약가능 ${r.availableSites.length}개)`;
-    det.querySelector('.sites-body').innerHTML = sitesTable(r, nights);
+    det.querySelector('summary').textContent = r.campLevel
+      ? `사이트 ${r.sites.length}개 보기 (일자별 잔여: ${nights.map((n) => `${n.slice(5)} ${r.campLevel.availableCountByDate[n] ?? '?'}개`).join(', ')})`
+      : `사이트 ${r.sites.length}개 보기 (예약가능 ${r.availableSites.length}개)`;
+    det.querySelector('.sites-body').innerHTML = (r.note ? `<p class="note">${esc(r.note)}</p>` : '') + sitesTable(r, nights);
   } else {
     det.remove();
   }
@@ -190,7 +207,9 @@ function sitesTable(r, nights) {
   const head = `<tr><th>사이트</th><th>구역</th><th>크기</th><th>정원</th><th>기간 요금(${nights.length}박)</th><th>일자별 (${nights.map((n) => n.slice(5)).join(', ')})</th><th></th></tr>`;
   const body = sorted
     .map((s) => {
-      const dots = s.perNight.map((ok) => (ok ? '🟢' : '⚫')).join('');
+      const dots = s.countByDate
+        ? nights.map((n) => { const c = s.countByDate[n]; return c == null ? '❔' : c > 0 ? `🟢${c}` : '⚫'; }).join(' ')
+        : s.perNight.map((ok) => (ok == null ? '❔' : ok ? '🟢' : '⚫')).join('');
       const price = s.price != null ? won(s.price) : r.est ? `≈${won(r.est.total)}` : '-';
       return `<tr class="${s.availableAll ? 'avail' : ''}"><td>${esc(s.name)}</td><td>${esc(s.zone || '-')}</td><td>${esc(s.size || '-')}</td><td>${esc(s.capacity || '-')}</td><td>${price}</td><td class="dots" title="🟢 예약가능 ⚫ 마감">${dots}</td><td>${s.bookUrl ? `<a href="${esc(s.bookUrl)}" target="_blank" rel="noopener">예약 ↗</a>` : ''}</td></tr>`;
     })

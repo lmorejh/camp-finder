@@ -100,6 +100,7 @@ export function normalizeResult(platform, camp, sites, extra = {}) {
       capacity: s.capacity || '',
       priceByDate: s.priceByDate || {},
       availableDates: [...new Set(s.availableDates || [])].sort(),
+      ...(s.countByDate ? { countByDate: s.countByDate } : {}), // 유형/구역 단위 잔여 수(땡큐캠핑·티켓플레이)
       bookUrl: s.bookUrl || camp.bookingUrl,
     })),
     ...extra,
