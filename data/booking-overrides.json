@@ -712,5 +712,523 @@
   "ref": "GD97",
   "note": "메이크티켓(Smartix) 예약; munam.cheongju.go.kr/ochang/reservation/reserve.jsp에서 연결, 48h 내 입금",
   "source": "research_result_C.json"
+ },
+ "오스트리아캠핑장|가평군": {
+  "url": "https://www.camfit.co.kr/camp/677f990f35db51001dc4d912",
+  "engine": "camfit",
+  "ref": "677f990f35db51001dc4d912",
+  "note": "캠핏 '오스트리아캠핑' 실시간예약(장박 접수중). 공식 austriacamping.com 은 인증서 만료로 미확인; 여기어때/NOL 펜션 채널도 병행",
+  "source": "research_result_B.json"
+ },
+ "블루문캠핑장|가평군": {
+  "url": "https://booking.naver.com/booking/6/bizes/1654013",
+  "engine": "naver",
+  "ref": "1654013",
+  "note": "네이버 예약(bizes 1654013) + 자체 홈페이지 실시간예약(bluemooncp.net/contents/online, 접속불가로 미확인). 여기어때/NOL 병행",
+  "source": "research_result_B.json"
+ },
+ "너의아지트가되어줄래|가평군": {
+  "url": "https://youagit.com/",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지(youagit.com) 실시간예약 시스템; 봇 차단(403)으로 캘린더 경로 미확인. 카카오채널 병행",
+  "source": "research_result_B.json"
+ },
+ "자라섬오토캠핑장|가평군": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=1",
+  "engine": "thankq",
+  "ref": "1",
+  "note": "2026년 인터파크→땡큐캠핑 전환. 매월 10일 14시 익월 오픈. 구 인터파크 21006124",
+  "source": "research_result_B.json"
+ },
+ "불루문캠핑장|가평군": {
+  "url": "https://booking.naver.com/booking/6/bizes/1654013",
+  "engine": "naver",
+  "ref": "1654013",
+  "note": "블루문캠핑장 중복 항목. 네이버 예약 + 자체 홈페이지 실시간예약",
+  "source": "research_result_B.json"
+ },
+ "캠프올모|가평군": {
+  "url": "https://www.camfit.co.kr/camp/64df3bf4ef9daf001e778521",
+  "engine": "camfit",
+  "ref": "64df3bf4ef9daf001e778521",
+  "note": "캠핏 페이지 존재. 공식 알림장은 매월 1일 10시 문자 선착순 접수 안내(campolmo.com/15) — 병행 확인 필요",
+  "source": "research_result_B.json"
+ },
+ "호명산잣나무숲속캠핑장|가평군": {
+  "url": "https://www.hmforestcamp.com/",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지(쇼핑몰형 shop_view) 실시간예약, 매월 20일 16시 익월 오픈. 403으로 상세경로 미확인",
+  "source": "research_result_B.json"
+ },
+ "산장관광지|가평군": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=789",
+  "engine": "thankq",
+  "ref": "789",
+  "note": "가평시설관리공단 예약하기 페이지가 땡큐캠핑으로 연결. 매월 10일 16시 오픈",
+  "source": "research_result_B.json"
+ },
+ "새와참새캠핑장|가평군": {
+  "url": "https://cafe.naver.com/",
+  "engine": "cafe",
+  "ref": "",
+  "note": "온라인 캘린더 없음. 인스타그램 DM 선착순/입금순 수기접수(전화·문자 불가)",
+  "source": "research_result_B.json"
+ },
+ "구곡폭포 국민여가캠핑장|가평군": {
+  "url": "https://rev.cuc.or.kr/www/121?company_code=CUC12&part_code=02",
+  "engine": "other",
+  "ref": "gugog",
+  "note": "실제 소재지 강원 춘천. 춘천도시공사 통합예약시스템(rev.cuc.or.kr) 선착순 예약; gugog.ticketplay.zone(티켓플레이) 사이트도 병존",
+  "source": "research_result_B.json"
+ },
+ "킨텍스캠핑장|고양시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070088",
+  "engine": "yanolja",
+  "ref": "10070088",
+  "note": "인터파크 goods 22005895 가 NOL 숙소 페이지로 301 이전. 매월 10일 10시 익월 오픈",
+  "source": "research_result_B.json"
+ },
+ "도덕산캠핑장|광명시": {
+  "url": "https://reserve.gmuc.co.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "광명도시공사 자체 예약시스템(광명시민 추첨 + 넷째주 목요일 선착순)",
+  "source": "research_result_B.json"
+ },
+ "경기도 청소년야영장|광주": {
+  "url": "https://www.campingtalk.me/pubsec/camp/3797/main",
+  "engine": "campingtalk",
+  "ref": "3797",
+  "note": "인터파크→캠핑톡 전환. 셋째주 화요일 경기도민 우선",
+  "source": "research_result_B.json"
+ },
+ "구리토평가족캠핑장|구리시": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=3270",
+  "engine": "thankq",
+  "ref": "3270",
+  "note": "땡큐캠핑 매월 11일 0시 오픈(2026.10까지 오픈). 구 인터파크 20003623 은 NOL 티켓 판매종료",
+  "source": "research_result_B.json"
+ },
+ "범바위캠핑장|김포시": {
+  "url": "https://booking.ddnayo.com/booking-calendar-status?accommodationId=1436",
+  "engine": "ddnayo",
+  "ref": "1436",
+  "note": "떠나요닷컴 예약 캘린더",
+  "source": "research_result_B.json"
+ },
+ "김포 문수골힐링캠핑장|김포시": {
+  "url": "https://forcamper.co.kr/campgrounds/1758",
+  "engine": "other",
+  "ref": "1758",
+  "note": "홈페이지 '실시간 예약'이 포캠퍼(forcamper) 캘린더로 연결. 2025년 부지 이전 운영",
+  "source": "research_result_B.json"
+ },
+ "파인힐빌리지캠핑장|동두천시": {
+  "url": "https://www.camfit.co.kr/camp/60c720c5d5987e001ed2d293",
+  "engine": "camfit",
+  "ref": "60c720c5d5987e001ed2d293",
+  "note": "캠핏 실시간예약(캠박 병행)",
+  "source": "research_result_B.json"
+ },
+ "광교호수공원 가족캠핑장|수원시": {
+  "url": "https://forest.maketicket.co.kr/ticket/GD129",
+  "engine": "other",
+  "ref": "GD129",
+  "note": "수원도시공사 → 메이크티켓(forest.maketicket) 캘린더. 추첨 월1회 + 선착순",
+  "source": "research_result_B.json"
+ },
+ "시흥갯골캠핑장|시흥시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070077",
+  "engine": "yanolja",
+  "ref": "10070077",
+  "note": "인터파크 '2026 시흥갯골캠핑장'(23001955) → NOL 숙소 페이지 301 이전. 매월 15일 시민우선/20일 일반",
+  "source": "research_result_B.json"
+ },
+ "트리캠핑장|안산시": {
+  "url": "http://www.treecamping.net/",
+  "engine": "other",
+  "ref": "",
+  "note": "실제 소재지 인천 옹진군 선재도. 자체 홈페이지(아이타입 빌더) 예약; SSL 오류로 캘린더 미확인, 전화 010-9447-9410",
+  "source": "research_result_B.json"
+ },
+ "안산화랑오토캠핑장|안산시": {
+  "url": "https://hwarangcamp.ansanuc.net/",
+  "engine": "other",
+  "ref": "",
+  "note": "안산도시공사 자체 시스템: 매월 1~7일 추첨 신청 + 잔여 실시간예약(/user/reservationNextmonth.do). 구 인터파크 20004246 판매종료",
+  "source": "research_result_B.json"
+ },
+ "안성맞춤캠핑장|안성시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070078",
+  "engine": "yanolja",
+  "ref": "10070078",
+  "note": "인터파크 '2026 안성맞춤캠핑장'(20004468) → NOL 숙소 페이지 301 이전. 인터넷 예약만 가능",
+  "source": "research_result_B.json"
+ },
+ "천보산웰니스캠핑장|양주시": {
+  "url": "https://camfit.co.kr/camp/672322a1c122f1001d3b13c5",
+  "engine": "camfit",
+  "ref": "672322a1c122f1001d3b13c5",
+  "note": "캠핏 '양주 천보wellness캠핑장'",
+  "source": "research_result_B.json"
+ },
+ "휴 리조트캠핑장|양주시": {
+  "url": "https://xn--oy2b23yvwhete.com/sub7",
+  "engine": "other",
+  "ref": "",
+  "note": "양주휴리조트.com 자체 실시간예약(/sub7). 문의 031-845-1111",
+  "source": "research_result_B.json"
+ },
+ "미술관옆 캠핑장|양주시": {
+  "url": "https://reserve.yjuc.or.kr/main",
+  "engine": "other",
+  "ref": "",
+  "note": "양주도시공사 통합예약서비스(전월 1일 09시 시민우선, 2일 13시 일반). 모바일 메뉴에 camp.xticket.kr 링크도 존재",
+  "source": "research_result_B.json"
+ },
+ "다문188캠핑장|양평군": {
+  "url": "https://www.graega.com/rooms/7001",
+  "engine": "other",
+  "ref": "7001",
+  "note": "그래가(graega) 예약 페이지",
+  "source": "research_result_B.json"
+ },
+ "거북바위캠핑장|양평군": {
+  "url": "https://www.turtlecamp.co.kr/bbs/board.php?bo_table=reservation",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지(그누보드/메이크24) 실시간예약 게시판",
+  "source": "research_result_B.json"
+ },
+ "더 포레스트캠핑장|양평군": {
+  "url": "http://theforestcamp.co.kr/newpage/newpage.php?f_id=realTime_reserv",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지 실시간예약 페이지(인증서 만료로 내부 엔진 미확인)",
+  "source": "research_result_B.json"
+ },
+ "여주해여림빌리지캠핑장|여주시": {
+  "url": "https://www.campingtalk.me/booking/camp/1856",
+  "engine": "campingtalk",
+  "ref": "1856",
+  "note": "haeyeorim.co.kr/1856 은 캠핑톡 화이트라벨(동일 id 1856). 네이버 예약/야놀자 병행",
+  "source": "research_result_B.json"
+ },
+ "이포보캠핑장|여주시": {
+  "url": "https://yeojuuc.or.kr/camping/epoc/camping/Z65332353",
+  "engine": "other",
+  "ref": "Z65332353",
+  "note": "여주도시공사 캠핑장 예약(미리해 mirihae 엔진). 오토 Z65332353 / 웰빙 B24626523",
+  "source": "research_result_B.json"
+ },
+ "금은모래캠핑장|여주시": {
+  "url": "https://camp.yeojuuc.or.kr/gsmc",
+  "engine": "other",
+  "ref": "gsmc",
+  "note": "여주도시공사 캠핑장 예약(미리해 mirihae.com/gsmc/camping 엔진) 온라인 실시간예약",
+  "source": "research_result_B.json"
+ },
+ "땅에미소캠핑장|연천군": {
+  "url": "https://camfit.co.kr/camp/60a21279beca16001e5f98e3",
+  "engine": "camfit",
+  "ref": "60a21279beca16001e5f98e3",
+  "note": "캠핏 실시간예약, 사이트 선착순 배정",
+  "source": "research_result_B.json"
+ },
+ "연천재인폭포캠핑장|연천군": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070080",
+  "engine": "yanolja",
+  "ref": "10070080",
+  "note": "연천군시설관리공단 'NOL 전환' 공지. 인터파크 22016459 → NOL 숙소 301. 매월 5일 10시 오픈. 스프레드시트 :9011 자체시스템은 접속불가",
+  "source": "research_result_B.json"
+ },
+ "한탄강오토캠핑장|연천군": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070081",
+  "engine": "yanolja",
+  "ref": "10070081",
+  "note": "연천군시설관리공단 → NOL(야놀자) 전환. 인터파크 21005592 → NOL 숙소 301. 매월 1일 10시 오픈",
+  "source": "research_result_B.json"
+ },
+ "오산시 맑음터 공원캠핑장|오산시": {
+  "url": "https://forest.maketicket.co.kr/ticket/GD82",
+  "engine": "other",
+  "ref": "GD82",
+  "note": "오산시 캠핑장 홈페이지(osan.go.kr/camping) → 메이크티켓 캘린더. 24시간 내 미결제 취소",
+  "source": "research_result_B.json"
+ },
+ "파이브이모션캠핑장|용인시": {
+  "url": "https://www.camfit.co.kr/",
+  "engine": "camfit",
+  "ref": "",
+  "note": "공식 사이트 공지: '캠핑장 예약은 캠핏으로만 접수'. 구 자체 캘린더(/views/booking/)는 404. 캠핏 camp id 미확인",
+  "source": "research_result_B.json"
+ },
+ "의왕 왕송호수캠핑장|의왕시": {
+  "url": "https://forest.maketicket.co.kr/ticket/GD91",
+  "engine": "other",
+  "ref": "GD91",
+  "note": "의왕도시공사 → 메이크티켓. 1개월 전 인터넷 추첨응모(시민→일반) + 셋째주 월 잔여 선착순",
+  "source": "research_result_B.json"
+ },
+ "이천농업테마공원국민여가캠핑장|이천시": {
+  "url": "https://farmpark.2000fmc.or.kr/park",
+  "engine": "other",
+  "ref": "",
+  "note": "이천시설관리공단 숙박·캠핑장 통합예약(자체 시스템)",
+  "source": "research_result_B.json"
+ },
+ "천안국민여가캠핑장|천안시": {
+  "url": "https://mccamp.cauc.or.kr/reserv/",
+  "engine": "other",
+  "ref": "",
+  "note": "실제 소재지 충남 천안. 천안도시공사 자체 홈페이지 실시간예약(1~2월 휴장)",
+  "source": "research_result_B.json"
+ },
+ "황금박쥐캠핑장|춘천시": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=1710",
+  "engine": "thankq",
+  "ref": "1710",
+  "note": "실제 소재지 강원 춘천. modoo 종료. 구 캠퍼스토리 r.camperstory.com/?1710 이 땡큐캠핑 cseq=1710 으로 리다이렉트",
+  "source": "research_result_B.json"
+ },
+ "초리포레스트캠핑장|파주시": {
+  "url": "http://choriforest.co.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지(그누보드) '실시간 예약' 게시판(bbs/board.php). SSL 오류로 정확한 bo_table 미확인. 문의 010-9135-1772",
+  "source": "research_result_B.json"
+ },
+ "임진각평화누리캠핑장|파주시": {
+  "url": "https://forest.maketicket.co.kr/ticket/GD111",
+  "engine": "other",
+  "ref": "GD111",
+  "note": "경기관광공사 → 메이크티켓 온라인 실시간예약",
+  "source": "research_result_B.json"
+ },
+ "공릉관광지가족캠핑장|파주시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070096",
+  "engine": "yanolja",
+  "ref": "10070096",
+  "note": "인터파크 '2026 공릉캠핑장'(25006798, ~2026.09.30) → NOL 숙소 301 이전. 매월 15일 11시 오픈. 2027년 키즈캠핑랜드 재조성 예정(하니랜드 위탁)",
+  "source": "research_result_B.json"
+ },
+ "내리캠핑장|평택시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070089",
+  "engine": "yanolja",
+  "ref": "10070089",
+  "note": "인터파크 24011884 → NOL 숙소 301 이전. 인터넷 예약만 가능",
+  "source": "research_result_B.json"
+ },
+ "소풍정원캠핑장|평택시": {
+  "url": "https://www.pyeongtaek.go.kr/camp/main.do",
+  "engine": "other",
+  "ref": "",
+  "note": "2025.01.09부터 평택시 공공시설예약 통합시스템(자체)로 변경, 이용 14일 전 09시 오픈. 구 캠핑톡 3827",
+  "source": "research_result_B.json"
+ },
+ "진위천유원지캠핑장|평택시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070090",
+  "engine": "yanolja",
+  "ref": "10070090",
+  "note": "인터파크 21009223 → NOL 숙소 301 이전. 전월 15일 시민우선/20일 일반",
+  "source": "research_result_B.json"
+ },
+ "평택국민여가캠핑장|평택시": {
+  "url": "https://www.campingtalk.me/pubsec/camp/3734/main",
+  "engine": "campingtalk",
+  "ref": "3734",
+  "note": "평택항 국민여가캠핑장. 캠핑톡 공공 예약(시민 1차/타지역 2차)",
+  "source": "research_result_B.json"
+ },
+ "비둘기낭캠핑장|포천시": {
+  "url": "https://camp.pcfac.or.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "포천문화관광재단 자체 예약시스템(인터넷 접수만, 전화예약 불가, 포천시민 우선예약제)",
+  "source": "research_result_B.json"
+ },
+ "담터오지캠핑장|포천시": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=2047",
+  "engine": "thankq",
+  "ref": "2047",
+  "note": "땡큐캠핑 실시간예약(ojicamping.com 은 안내용)",
+  "source": "research_result_B.json"
+ },
+ "포천엉클킴스캠핑장|포천시": {
+  "url": "https://reservation.camp.realground.co.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "modoo 종료. 리얼그라운드(realground) 예약 캘린더; 인스타/캠핏(camfit) 병행 안내",
+  "source": "research_result_B.json"
+ },
+ "수목원프로방스캠핑장|포천시": {
+  "url": "https://booking.ddnayo.com/booking-calendar-status?accommodationId=14694",
+  "engine": "ddnayo",
+  "ref": "14694",
+  "note": "treevalley.co.kr '실시간예약' → 떠나요닷컴 예약시스템",
+  "source": "research_result_B.json"
+ },
+ "캠프운악|포천시": {
+  "url": "https://www.camfit.co.kr/camp/6964b9b98f5094001d4c80fe",
+  "engine": "camfit",
+  "ref": "6964b9b98f5094001d4c80fe",
+  "note": "홈페이지 '캠핏 예약' 링크. 자체 '캠운 예약'(campunak.co.kr/Reservation/Reservation_Status.aspx) 병행",
+  "source": "research_result_B.json"
+ },
+ "아버지의숲|포천시": {
+  "url": "https://booking.naver.com/booking/3/bizes/59772",
+  "engine": "naver",
+  "ref": "59772",
+  "note": "아버지의숲 산정캠프. modoo 종료 → supeon.qshop.ai(N예약 버튼) / 네이버 실시간예약",
+  "source": "research_result_B.json"
+ },
+ "백미리희망캠핑장|화성군": {
+  "url": "https://www.camfit.co.kr/camp/69b4de84eaecf4001dcbcabf",
+  "engine": "camfit",
+  "ref": "69b4de84eaecf4001dcbcabf",
+  "note": "홈페이지 공지 '자체 예약시스템 미운영', 캠핏 또는 네이버 예약 이용",
+  "source": "research_result_B.json"
+ },
+ "화성시향남오토캠핑장|화성시": {
+  "url": "https://yeyak.hscity.go.kr/1098/3058/campCalendarList.do?campIdx=2",
+  "engine": "other",
+  "ref": "campIdx=2",
+  "note": "화성시 통합예약(화성도시공사) 캘린더, 매월 1일 시민/3일 일반. 구 메이크티켓 GD90",
+  "source": "research_result_B.json"
+ },
+ "노을캠핑장|서울시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070075",
+  "engine": "yanolja",
+  "ref": "10070075",
+  "note": "인터파크 22002652 → NOL 숙소 301 이전. 한 달 전 15일 14시 오픈",
+  "source": "research_result_B.json"
+ },
+ "중랑숲캠핑장|서울시": {
+  "url": "https://booking.naver.com/booking/5/bizes/387475",
+  "engine": "naver",
+  "ref": "387475",
+  "note": "중랑캠핑숲(중랑가족캠핑장). modoo 종료, 네이버 예약 시스템(매월 10일/15일 오픈)",
+  "source": "research_result_B.json"
+ },
+ "천왕산가족캠핑장|서울시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070087",
+  "engine": "yanolja",
+  "ref": "10070087",
+  "note": "인터파크 21012652 → NOL 숙소 301 이전. 매월 10일 10시 오픈",
+  "source": "research_result_B.json"
+ },
+ "난지캠핑장|서울시": {
+  "url": "https://yeyak.seoul.go.kr/web/main.do",
+  "engine": "seoul",
+  "ref": "",
+  "note": "서울시 공공서비스예약 > 공간시설 > 캠핑장(난지한강공원 난지캠핑장, 월별 서비스 등록). 매월 15일 14시 익월 오픈",
+  "source": "research_result_B.json"
+ },
+ "노을공원캠핑장|서울시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070075",
+  "engine": "yanolja",
+  "ref": "10070075",
+  "note": "노을캠핑장 중복 항목(구 인터파크 22002652)",
+  "source": "research_result_B.json"
+ },
+ "강동그린웨이 가족캠핑장|서울시": {
+  "url": "https://camp.xticket.kr/web/main?shopEncode=5f9422e223671b122a7f2c94f4e15c6f71cd1a49141314cf19adccb98162b5b0",
+  "engine": "other",
+  "ref": "",
+  "note": "강동구도시관리공단 '예약 바로가기' → 엑스티켓(xticket) 캠핑 예약. 매월 5일 10시 오픈",
+  "source": "research_result_B.json"
+ },
+ "초안산캠핑장|서울시": {
+  "url": "https://reservation.nowonsc.kr/leisure/camping_date?cate1=2",
+  "engine": "other",
+  "ref": "",
+  "note": "노원구서비스공단 자체 예약시스템, 매월 9일 11시 선착순",
+  "source": "research_result_B.json"
+ },
+ "마린원캠핑장|강화도": {
+  "url": "https://camfit.co.kr/camp/69913d100d5db4001d3ab6ce",
+  "engine": "camfit",
+  "ref": "69913d100d5db4001d3ab6ce",
+  "note": "마리원관광농원캠핑장. 홈페이지에 '네이버 예약 / 캠핏 예약' 병행, 분기별 오픈",
+  "source": "research_result_B.json"
+ },
+ "씨사이드힐캠핑장|강화도": {
+  "url": "https://camfit.co.kr/camp/69b14a9e4386d8001dae2c54",
+  "engine": "camfit",
+  "ref": "69b14a9e4386d8001dae2c54",
+  "note": "modoo 종료. 캠핏 매달 첫주 토요일 12시 오픈(구 camfit 61cc191740d609001e3b576f)",
+  "source": "research_result_B.json"
+ },
+ "바다다캠핑장|강화도": {
+  "url": "https://camfit.co.kr/camp/67734c58449500001d517d56",
+  "engine": "camfit",
+  "ref": "67734c58449500001d517d56",
+  "note": "캠핏 + 네이버/홈페이지(badadacamp.co.kr) 예약 병행",
+  "source": "research_result_B.json"
+ },
+ "섬뜰아래캠핑장|무의도": {
+  "url": "http://www.xn--ig2bths6x29d.com/",
+  "engine": "other",
+  "ref": "",
+  "note": "섬뜰아래.com 자체 실시간예약(인증서 불일치로 미확인). 네이버 객실예약/NOL 병행, 문자 010-3491-9920",
+  "source": "research_result_B.json"
+ },
+ "노을진캠핑장(구 수도권매립지캠핑장)|서구": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=16706",
+  "engine": "thankq",
+  "ref": "16706",
+  "note": "noeuljin.com '예약하기' → 땡큐캠핑. 매월 15일(인천) / 16일 14시 오픈. 구 인터파크 24000549 판매종료",
+  "source": "research_result_B.json"
+ },
+ "노을진캠핑장(구 수도권매립지캠핑장)|인천시": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=16706",
+  "engine": "thankq",
+  "ref": "16706",
+  "note": "중복 항목. 땡큐캠핑 cseq 16706",
+  "source": "research_result_B.json"
+ },
+ "씨사이드파크캠핑장|인천시": {
+  "url": "https://www.xn--hy1b07tnrd1yac7cpi07cn9xruo.com:444/index.asp",
+  "engine": "other",
+  "ref": "",
+  "note": "인천시설공단 안내페이지 → 민간운영사(영종씨사이드캠핑장㈜) 자체 예약 홈페이지. 문의 032-719-7779",
+  "source": "research_result_B.json"
+ },
+ "덕산국민여가캠핑장|인천시": {
+  "url": "https://www.ghss.or.kr/ttreserve/reserve/dscamp.do",
+  "engine": "other",
+  "ref": "",
+  "note": "강화군시설관리공단 통합예약시스템(자체)",
+  "source": "research_result_B.json"
+ },
+ "너나들이캠핑장|인천시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070073",
+  "engine": "yanolja",
+  "ref": "10070073",
+  "note": "인천대공원 캠핑장. 인터파크 21000325 → NOL 숙소 페이지로 이전(NOL 티켓 판매종료). 한 달 전 15일 14시 오픈",
+  "source": "research_result_B.json"
+ },
+ "수도권매립지캠핑장|인천시": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=16706",
+  "engine": "thankq",
+  "ref": "16706",
+  "note": "노을진캠핑장으로 개칭, 중복 항목. 땡큐캠핑 cseq 16706",
+  "source": "research_result_B.json"
+ },
+ "인천송도국제 캠핑장|인천시": {
+  "url": "https://nol.yanolja.com/stay/domestic/10070097",
+  "engine": "yanolja",
+  "ref": "10070097",
+  "note": "songdocamping.kr '실시간예약' → 인터파크 24005552 → NOL 숙소 301 이전. 매월 15일 11시 선착순. 구 메이크티켓 GD102",
+  "source": "research_result_B.json"
+ },
+ "함허동천야영장|인천시": {
+  "url": "https://www.ghss.or.kr/ttreserve/reserve/camp.do",
+  "engine": "other",
+  "ref": "",
+  "note": "강화군시설관리공단 통합예약시스템(자체). 문의 032-930-7000",
+  "source": "research_result_B.json"
  }
 }

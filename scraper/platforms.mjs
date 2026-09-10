@@ -15,7 +15,8 @@ export const PLATFORMS = {
   huyang: { name: '휴양림 예약시스템(지자체)', home: '', live: true },
   campingkorea: { name: '캠핑코리아(동해시, 대기열 우회 필요로 미지원)', home: 'https://www.campingkorea.or.kr', live: false },
   maketicket: { name: '메이크티켓', home: '', live: false },
-  ddnayo: { name: '떠나요', home: 'https://booking.ddnayo.com', live: false },
+  ddnayo: { name: '떠나요', home: 'https://booking.ddnayo.com', live: true },
+  nolstay: { name: 'NOL(야놀자) 숙소', home: 'https://nol.yanolja.com', live: false },
   seoul: { name: '서울시 공공서비스예약', home: 'https://yeyak.seoul.go.kr', live: false },
   navercafe: { name: '네이버 카페(수기 예약)', home: '', live: false },
   own: { name: '캠핑장 자체 홈페이지', home: '', live: false },
@@ -52,6 +53,7 @@ export function detectPlatform(raw) {
   }
   if (/네이버\s*예약/.test(s) || lower.includes('map.naver.com') || lower.includes('place.naver.com')) return mk('naver');
   if (lower.includes('cafe.naver.com')) return mk('navercafe');
+  if (lower.includes('nol.yanolja.com/stay/') || lower.includes('place-site.yanolja.com')) return mk('nolstay', (s.match(/(?:domestic|places)\/(\d+)/) || [])[1] || '');
   if (/인터파크/.test(s) || lower.includes('interpark') || lower.includes('nol.yanolja.com/ticket')) {
     const m = s.match(/(?:goods|products)\/(\d{6,})/);
     return mk('interpark', m ? m[1] : '');

@@ -191,6 +191,7 @@ function card(r, nights) {
   const links = [];
   if (c.bookingUrl) links.push(`<a href="${esc(c.bookingUrl)}" target="_blank" rel="noopener">예약 페이지 ↗</a>`);
   else if (c.bookingRaw) links.push(`<span class="note">예약: ${esc(c.bookingRaw)}</span>`);
+  if (c.bookingNote) links.push(`<span class="note" title="예약처 조사 메모">ℹ ${esc(c.bookingNote.length > 70 ? c.bookingNote.slice(0, 70) + '…' : c.bookingNote)}</span>`);
   for (const v of c.videos.filter((v) => v.url).slice(0, 2)) links.push(`<a href="${esc(v.url)}" target="_blank" rel="noopener">▶ 포토라이TV 영상${v.date ? ' (' + v.date.slice(0, 7) + ')' : ''}</a>`);
   if (c.videos.some((v) => v.food)) links.push(`<span class="note">🍳 ${esc(c.videos.map((v) => v.food).filter(Boolean).slice(0, 2).join(' / '))}</span>`);
   el.querySelector('.links').innerHTML = links.join('');
