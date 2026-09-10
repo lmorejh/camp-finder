@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadAdapters, fetchCamp } from './core.mjs';
+import { loadAdapters, fetchCamp, prefetchAll } from './core.mjs';
 import { addDays, toISO } from '../docs/pricing.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -35,6 +35,7 @@ let prev = { camps: {} };
 try { prev = JSON.parse(fs.readFileSync(outPath, 'utf8')); } catch {}
 
 const results = { ...prev.camps };
+await prefetchAll(adapters, targets, from, to);
 let i = 0;
 async function worker() {
   while (i < targets.length) {

@@ -17,6 +17,20 @@ export async function loadAdapters() {
   return adapters;
 }
 
+/** 어댑터별 prefetch(camps, from, to) 훅 호출(지역 단위 일괄 조회 등) */
+export async function prefetchAll(adapters, camps, from, to) {
+  for (const [id, ad] of Object.entries(adapters)) {
+    if (typeof ad.prefetch !== 'function') continue;
+    const mine = camps.filter((c) => c.platform === id);
+    if (!mine.length) continue;
+    try {
+      await ad.prefetch(mine, from, to);
+    } catch (e) {
+      console.error(`[prefetch:${id}]`, e.message);
+    }
+  }
+}
+
 export async function fetchCamp(adapters, camp, from, to) {
   const ad = adapters[camp.platform];
   if (!ad) return { campId: camp.id, platform: camp.platform, status: 'unsupported', fetchedAt: new Date().toISOString(), sites: [] };
