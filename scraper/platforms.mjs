@@ -10,6 +10,11 @@ export const PLATFORMS = {
   interpark: { name: '인터파크/NOL 티켓', home: 'https://tickets.interpark.com', live: true },
   ticketplay: { name: '티켓플레이', home: '', live: true },
   zapza: { name: '잡자', home: '', live: true },
+  xticket: { name: '엑스티켓', home: 'https://camp.xticket.kr', live: true },
+  campingtalk: { name: '캠핑톡', home: 'https://www.campingtalk.me', live: true },
+  huyang: { name: '휴양림 예약시스템(지자체)', home: '', live: true },
+  campingkorea: { name: '캠핑코리아(동해시, 대기열 우회 필요로 미지원)', home: 'https://www.campingkorea.or.kr', live: false },
+  maketicket: { name: '메이크티켓', home: '', live: false },
   ddnayo: { name: '떠나요', home: 'https://booking.ddnayo.com', live: false },
   seoul: { name: '서울시 공공서비스예약', home: 'https://yeyak.seoul.go.kr', live: false },
   navercafe: { name: '네이버 카페(수기 예약)', home: '', live: false },
@@ -51,6 +56,11 @@ export function detectPlatform(raw) {
     const m = s.match(/(?:goods|products)\/(\d{6,})/);
     return mk('interpark', m ? m[1] : '');
   }
+  if (lower.includes('xticket.kr')) return mk('xticket', (s.match(/shop_?[eE]ncode=([0-9a-f]{64})/) || [])[1] || '');
+  if (lower.includes('campingtalk.me')) return mk('campingtalk', (s.match(/camp\/(\d+)|campid=(\d+)/i) || []).slice(1).find(Boolean) || '');
+  if (lower.includes('huyang.co.kr')) return mk('huyang', (s.match(/wloc=([A-Z0-9]+)/) || [])[1] || '');
+  if (lower.includes('campingkorea.or.kr')) return mk('campingkorea');
+  if (lower.includes('maketicket.co.kr')) return mk('maketicket', (s.match(/ticket\/(\w+)/) || [])[1] || '');
   if (lower.includes('ticketplay.zone')) return mk('ticketplay');
   if (lower.includes('zapza.me')) return mk('zapza');
   if (lower.includes('ddnayo.com')) return mk('ddnayo');

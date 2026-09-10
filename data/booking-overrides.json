@@ -1,0 +1,716 @@
+{
+ "캠핑느루|고성군": {
+  "url": "https://camfit.co.kr/search?keyword=%EC%BA%A0%ED%95%91%EB%8A%90%EB%A3%A8",
+  "engine": "camfit",
+  "ref": "",
+  "note": "modoo 홈페이지는 2025-06 서비스 종료; 캠핏(camfit)으로 예약(캠프 24hex ID 미확인, 캠핏 검색 필요)",
+  "source": "research_result_A.json"
+ },
+ "송지호오토캠핑장|고성군": {
+  "url": "https://gwgs.pubcamping.kr/@song/index",
+  "engine": "other",
+  "ref": "gwgs",
+  "note": "고성군 공공캠핑장 통합예약(gwgs.pubcamping.kr, 통합예약 /Home/H10000/H10100/productSearch); 구 gwgs.ticketplay.zone은 접속 불가",
+  "source": "research_result_A.json"
+ },
+ "망상오토캠핑장|동해시": {
+  "url": "https://www.campingkorea.or.kr/user/reservation/BD_reservation.do",
+  "engine": "campingkorea",
+  "ref": "msAtCpRs",
+  "note": "동해시 관광지 통합예약시스템(campingkorea.or.kr) 온라인예약",
+  "source": "research_result_A.json"
+ },
+ "연곡솔향기캠핑장|동해시": {
+  "url": "https://camping.gtdc.or.kr/pub/reserv.do",
+  "engine": "other",
+  "ref": "",
+  "note": "강릉관광개발공사 연곡해변캠핑장 자체 예약시스템(dzSmart Reserv); 실제 소재지는 강릉시",
+  "source": "research_result_A.json"
+ },
+ "추암오토캠핑장|동해시": {
+  "url": "https://www.campingkorea.or.kr/user/reservation/BD_reservation.do",
+  "engine": "campingkorea",
+  "ref": "caAtCp",
+  "note": "chuamautocamping.or.kr 도메인 소멸; 2024년 동해시 통합예약(campingkorea.or.kr)으로 이관",
+  "source": "research_result_A.json"
+ },
+ "동해망상오토캠핑장|동해시": {
+  "url": "https://www.campingkorea.or.kr/user/reservation/BD_reservation.do",
+  "engine": "campingkorea",
+  "ref": "msAtCpRs",
+  "note": "망상오토캠핑리조트와 동일 시설; 동해시 통합예약",
+  "source": "research_result_A.json"
+ },
+ "제2망상오토캠핑장|동해시": {
+  "url": "https://www.campingkorea.or.kr/user/reservation/BD_reservation.do",
+  "engine": "campingkorea",
+  "ref": "",
+  "note": "망상 제2오토캠핑장; 동해시 통합예약시스템에서만 예약(이용일 30일 전 11시 오픈)",
+  "source": "research_result_A.json"
+ },
+ "맹방비치캠핑장|삼척시": {
+  "url": "https://resv.staylive.co.kr/resv/1664242547",
+  "engine": "other",
+  "ref": "1664242547",
+  "note": "스테이라이브(StayLive) 예약 캘린더; samcheokcamp.kr/reservation 에서 링크",
+  "source": "research_result_A.json"
+ },
+ "장호비치캠핑장|삼척시": {
+  "url": "https://forest.maketicket.co.kr/ticket/gd41",
+  "engine": "other",
+  "ref": "gd41",
+  "note": "메이크티켓(Smartix) 예약일 선택→좌석→결제; janghocamping.kr 에서 연결, 매월 1일 09시 오픈",
+  "source": "research_result_A.json"
+ },
+ "속초국민여가캠핑장|속초시": {
+  "url": "https://reserve.sokchosiseol.or.kr/homepage/reservation_intro.jsp",
+  "engine": "other",
+  "ref": "",
+  "note": "속초시시설관리공단 자체 예약시스템(reserve.sokchosiseol.or.kr)",
+  "source": "research_result_A.json"
+ },
+ "죽도해수욕장야영장|양양군": {
+  "url": "https://jukdocam.nowr.net/m_member/?co_id=jukdocam",
+  "engine": "other",
+  "ref": "jukdocam",
+  "note": "nowr.net 실시간예약 시스템(jukdo.or.kr 실시간예약 메뉴)",
+  "source": "research_result_A.json"
+ },
+ "지경국민여가캠핑장|양양군": {
+  "url": "http://www.jgcamp.kr/reservation.asp?location=002",
+  "engine": "other",
+  "ref": "",
+  "note": "양양군 자체 ASP 홈페이지 온라인예약(예약하기), https 미지원",
+  "source": "research_result_A.json"
+ },
+ "오아시스정글캠핑장|인제군": {
+  "url": "https://oasisjungle.com/reservation/create",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지(Next.js) 예약 생성/조회, 30일 전부터 예약",
+  "source": "research_result_A.json"
+ },
+ "동강전망자연휴양림캠핑장|정선군": {
+  "url": "https://jsimc.huyang.co.kr:453/reservation.asp?location=003&wloc=C01",
+  "engine": "other",
+  "ref": "C01",
+  "note": "정선군시설관리공단 휴양림 예약시스템(huyang.co.kr) 팝업; 매월 1일 11시 익월 오픈",
+  "source": "research_result_A.json"
+ },
+ "화암약수야영장|정선군": {
+  "url": "https://jsimc.huyang.co.kr:453/reservation.asp?location=003&wloc=A01",
+  "engine": "other",
+  "ref": "A01",
+  "note": "정선군시설관리공단 휴양림 예약시스템(huyang.co.kr) 팝업; 매월 1일 10시 오픈",
+  "source": "research_result_A.json"
+ },
+ "회동솔향캠핑장|정선군": {
+  "url": "https://jsimc.huyang.co.kr:453/reservation.asp?location=003&wloc=D01",
+  "engine": "other",
+  "ref": "D01",
+  "note": "정선군시설관리공단 휴양림 예약시스템(huyang.co.kr); 전화(033-560-3453)/현장 접수 병행",
+  "source": "research_result_A.json"
+ },
+ "왕터리조트캠핑장|춘천시": {
+  "url": "https://place-site.yanolja.com/places/1000101643",
+  "engine": "yanolja",
+  "ref": "1000101643",
+  "note": "wangter.kr 접속 불가; NOL(야놀자) 카라반&캠핑 판매, 여기어때(70330)도 병행",
+  "source": "research_result_A.json"
+ },
+ "어반슬로우시티|춘천시": {
+  "url": "전화예약",
+  "engine": "phone",
+  "ref": "",
+  "note": "modoo 종료, urbanslowcity.com 미접속; 전화(1899-9349) 예약 후 입금 방식",
+  "source": "research_result_A.json"
+ },
+ "춘천별빛캠핑장|춘천시": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=4254",
+  "engine": "thankq",
+  "ref": "4254",
+  "note": "modoo 종료; 땡큐캠핑 cseq=4254 확인, 캠핏/네이버예약도 병행(캠핏 ID 미확정)",
+  "source": "research_result_A.json"
+ },
+ "평창흥정계곡700캠핑장|평창군": {
+  "url": "https://www.camfit.co.kr/camp/65e52c5b59f743001e7c3a03",
+  "engine": "camfit",
+  "ref": "65e52c5b59f743001e7c3a03",
+  "note": "공식 홈페이지(camping700.co.kr)에서 캠핏 링크",
+  "source": "research_result_A.json"
+ },
+ "계방산오토캠핑장|평창군": {
+  "url": "https://camfit.co.kr/camp/61d3a4fa5df366001e3f16a6",
+  "engine": "camfit",
+  "ref": "61d3a4fa5df366001e3f16a6",
+  "note": "평창군시설관리공단(pcfmc.or.kr)에서 캠핏 링크",
+  "source": "research_result_A.json"
+ },
+ "평창국민여가캠핑장|평창군": {
+  "url": "https://camfit.co.kr/camp/646ad11beef1a3001ecb0fe1",
+  "engine": "camfit",
+  "ref": "646ad11beef1a3001ecb0fe1",
+  "note": "평창군시설관리공단 운영, 캠핏 예약",
+  "source": "research_result_A.json"
+ },
+ "개암벌용소관광농원|홍천군": {
+  "url": "http://6864.sp.aihp.kr/?ty=1&ct=7",
+  "engine": "other",
+  "ref": "6864",
+  "note": "aihp.kr 실시간예약 시스템(홈페이지 실시간예약 메뉴)",
+  "source": "research_result_A.json"
+ },
+ "세이지힐캠핑장|홍천군": {
+  "url": "https://camfit.co.kr/camp/653faa685f7b3e001e9499d3",
+  "engine": "camfit",
+  "ref": "653faa685f7b3e001e9499d3",
+  "note": "sagehill.co.kr 실시간예약 → 캠핏",
+  "source": "research_result_A.json"
+ },
+ "홍천 개암벌용소관광농원|홍천군": {
+  "url": "http://6864.sp.aihp.kr/?ty=1&ct=7",
+  "engine": "other",
+  "ref": "6864",
+  "note": "c12ef5f0c 와 동일 시설(중복)",
+  "source": "research_result_A.json"
+ },
+ "홍천강오토캠핑장|홍천군": {
+  "url": "https://www.hongcheon.go.kr/tour/selectResveWebList.do?key=1884&fcltsSite=hcriver",
+  "engine": "other",
+  "ref": "hcriver",
+  "note": "홍천군 문화관광포털 자체 예약 캘린더(온라인 전용)",
+  "source": "research_result_A.json"
+ },
+ "답게캠핑장|화천군": {
+  "url": "전화예약",
+  "engine": "phone",
+  "ref": "1284795401",
+  "note": "bit.ly → 네이버플레이스(1284795401); 전화(010-7643-5966)/인스타 DM 예약, 온라인 캘린더 없음",
+  "source": "research_result_A.json"
+ },
+ "만산동 국민여가캠핑장|화천군": {
+  "url": "https://www.campingtalk.me/booking/camp/3359",
+  "engine": "campingtalk",
+  "ref": "3359",
+  "note": "캠핑톡 예약 캘린더; 매월 셋째주 월 10시 오픈",
+  "source": "research_result_A.json"
+ },
+ "평화의댐 오토캠핑장|화천군": {
+  "url": "https://eco-school.ihc.go.kr/hb/camp/sub02_02",
+  "engine": "other",
+  "ref": "",
+  "note": "화천군 자체 실시간예약(eco-school.ihc.go.kr), 무통장입금 48시간 내",
+  "source": "research_result_A.json"
+ },
+ "횡성별빛마을 서울캠핑장|횡성군": {
+  "url": "폐업함",
+  "engine": "seoul",
+  "ref": "",
+  "note": "서울시 운영 종료(철원·횡성 서울캠핑장 폐쇄); 과거 서울시 공공서비스예약 사용",
+  "source": "research_result_A.json"
+ },
+ "수승대 오토캠핑장|거창군": {
+  "url": "https://www.geochang.go.kr/tour/ssd/camping/reserve/Reserve.do?pageCd=SD0603000000&siteGubun=ssd",
+  "engine": "other",
+  "ref": "",
+  "note": "거창군청 수승대 홈페이지 자체 예약시스템(달력형, 매일 22시 15일치 오픈)",
+  "source": "research_result_D.json"
+ },
+ "당항포 오토캠핑장|고성군": {
+  "url": "https://home-ticket.co.kr/danghangpo/views/productDetail.jsp?hd_id=936",
+  "engine": "other",
+  "ref": "hd_id=936",
+  "note": "고성군문화관광재단 HOME TICKET(hiddenticket) 티켓형 예약; 고성군 통합예약(goseong.go.kr/reserve)에서도 링크",
+  "source": "research_result_D.json"
+ },
+ "생림오토켐핑장|김해시": {
+  "url": "https://camp.xticket.kr/web/main?shopEncode=f5f32b56abe23f9aec682e337c7ee65772a4438ff09b56823d4c7d2a7528d940",
+  "engine": "other",
+  "ref": "xticket shopEncode=f5f32b56...",
+  "note": "엑스티켓(camp.xticket.kr) 캠핑 예약; 매월 1일 11시 익월 오픈, 금토일만 운영",
+  "source": "research_result_D.json"
+ },
+ "상주은모래비치캠핑장|남해군": {
+  "url": "https://sangjubeach.com/Home/realtime/R10100/productSearch",
+  "engine": "other",
+  "ref": "",
+  "note": "상주번영회 자체 홈페이지 실시간예약 모듈(sangjubeach.com)",
+  "source": "research_result_D.json"
+ },
+ "밀양아리랑오토캠핑장|밀양군": {
+  "url": "http://www.arirangcamp.co.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "밀양시시설관리공단 자체 홈페이지(회원가입 후 카드/가상계좌 예약, 매월 1일 10:30 오픈); 사이트가 fetch 시 ECONNRESET로 예약 하위 URL 미확인",
+  "source": "research_result_D.json"
+ },
+ "비토국민여가캠핑장|사천시": {
+  "url": "http://www.bitocamping.com/?c=booking/apply",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지 예약(bitocamping.com / bitocamping.co.kr, 매월 셋째주 수 13시 익월 오픈); 두 도메인 모두 fetch 시 DNS 실패, 고캠핑 등록 URL 기준",
+  "source": "research_result_D.json"
+ },
+ "삼장다목적캠핑장|산청군": {
+  "url": "전화예약",
+  "engine": "phone",
+  "ref": "",
+  "note": "전화예약 010-9929-4646 / 선착순; 온라인 달력 없음",
+  "source": "research_result_D.json"
+ },
+ "자양보 오토캠핑장|산청군": {
+  "url": "http://www.campingtalk.me/partner/calendar?campid=3505",
+  "engine": "campingtalk",
+  "ref": "campid=3505",
+  "note": "캠핑톡 홈페이지(jyb-camp.campingt.me) → campingtalk.me 달력",
+  "source": "research_result_D.json"
+ },
+ "황매산미리내파크 오토캠핑장|산청군": {
+  "url": "전화예약",
+  "engine": "phone",
+  "ref": "",
+  "note": "modoo.at 홈페이지 서비스종료(2025.6); 계좌이체(농협 010-3553-2927-09) 수기 예약, 온라인 달력 없음",
+  "source": "research_result_D.json"
+ },
+ "벽계야영장|의령군": {
+  "url": "https://www.uiryeong.go.kr/user/place/camp/viewDetail.uiryeong?menuCd=DOM_000000706005000000&category=C01&idx=CAMP000002",
+  "engine": "other",
+  "ref": "idx=CAMP000002",
+  "note": "의령군청 자체 예약시스템(JS 배치도형 예약, 인터넷예약만 가능); bkcamping.co.kr는 인증서 오류",
+  "source": "research_result_D.json"
+ },
+ "설뫼테마공원캠핑장|의령군": {
+  "url": "선착순",
+  "engine": "walkin",
+  "ref": "",
+  "note": "설뫼충효테마파크 야영장: 예약제 아님, 선착순 현장 입장",
+  "source": "research_result_D.json"
+ },
+ "포항국민여가캠핑장|포항시": {
+  "url": "https://www.pohang.go.kr/camping/web/?top=booking&sub=guide",
+  "engine": "other",
+  "ref": "",
+  "note": "포항시 자체 캠핑장 예약시스템(pohang.go.kr/camping, 카드/실시간계좌이체)",
+  "source": "research_result_D.json"
+ },
+ "평사리 공원 야영장|하동군": {
+  "url": "https://camp.xticket.kr/web/main?shopEncode=9a70806d9ece939f91136278845d34c118219969c03be87baf58f1c3f6733b31",
+  "engine": "other",
+  "ref": "xticket shopEncode=9a70806d...",
+  "note": "하동군 통합예약에서 '평사리다목적캠핑장' → 엑스티켓(camp.xticket.kr)으로 연결",
+  "source": "research_result_D.json"
+ },
+ "하동군 다목적캠핑장|하동군": {
+  "url": "https://www.hadong.go.kr/yeyak/01003/01061/01203.web?amode=view&roomId=RM0060&fcd=F042",
+  "engine": "other",
+  "ref": "roomId=RM0060 fcd=F042",
+  "note": "하동군 통합예약서비스(옥종 다목적캠핑장) 자체 시스템",
+  "source": "research_result_D.json"
+ },
+ "강나루오토캠핑장|함안군": {
+  "url": "https://camp.xticket.kr/web/main",
+  "engine": "other",
+  "ref": "xticket (shopEncode 미확인)",
+  "note": "엑스티켓(camp.xticket.kr) 실시간예약(고캠핑 등록), 함안군민 우선예약; 함안군 페이지 fetch 실패로 shopEncode 미확보",
+  "source": "research_result_D.json"
+ },
+ "거창국민여가캠핑장|거창군": {
+  "url": "https://www.xticket.kr/Web/Reservation?shop_encode=7d456c3a4660b3937f3754782aa44573619dd3a43724c5d60e4bb11348213714",
+  "engine": "other",
+  "ref": "xticket shop_encode=7d456c3a...",
+  "note": "미리내숲(gccamp.kr) → 엑스티켓 예약",
+  "source": "research_result_D.json"
+ },
+ "오류캠핑장|경주시": {
+  "url": "https://www.xticket.kr/Web/Reservation?shop_encode=1d452e80e849139a2c76ff348c1b3f1d5a491d6af95823ad850515d67901dd92",
+  "engine": "other",
+  "ref": "xticket shop_encode=1d452e80...",
+  "note": "경주시시설관리공단 오류캠핑장(orcp.or.kr) → 엑스티켓 실시간예약",
+  "source": "research_result_D.json"
+ },
+ "화랑마을 오토캠핑장|경주시": {
+  "url": "https://www.gyeongju.go.kr/hwarang/page.do?mnu_uid=3517",
+  "engine": "other",
+  "ref": "mnu_uid=3517",
+  "note": "경주 화랑마을 홈페이지 자체 달력 예약(호국야영장: 마루 17면·오토 25면, 매월 1일 10시 오픈)",
+  "source": "research_result_D.json"
+ },
+ "낙동강체육공원구미캠핑장|구미시": {
+  "url": "https://www.gmuc.or.kr/camping/index.do",
+  "engine": "other",
+  "ref": "",
+  "note": "구미도시공사 자체 예약시스템(예약하기 메뉴가 JS 팝업, 매월 2일 10시 오픈)",
+  "source": "research_result_D.json"
+ },
+ "문경국민여가캠핑장|문경군": {
+  "url": "https://www.mgtpcr.or.kr/web/campingList.do?menuIdx=363",
+  "engine": "other",
+  "ref": "",
+  "note": "문경관광진흥공단 자체 예약(문경새재 국민여가캠핑장); 당일 현장매표 병행",
+  "source": "research_result_D.json"
+ },
+ "청량산캠핑장|봉화군": {
+  "url": "https://www.bonghwa.go.kr/open.content/camp/reservation/reservation/",
+  "engine": "other",
+  "ref": "",
+  "note": "봉화군청 청량산캠핑장 자체 예약시스템(예약현황 및 예약하기)",
+  "source": "research_result_D.json"
+ },
+ "문장대오토캠핑장|상주군": {
+  "url": "https://www.sangju.go.kr/reserve/reservation/list.tc?mn=4508&pageSeq=3202&searchTrgtClsfCd=RMS004002&searchFcltNo=108",
+  "engine": "other",
+  "ref": "searchFcltNo=108",
+  "note": "상주시 통합예약 시스템(숙박/캠핑 온라인예약); mjdcamp.kr는 접속불가",
+  "source": "research_result_D.json"
+ },
+ "금수문화공원|성주군": {
+  "url": "https://www.sj.go.kr/gumsu/page.do?mnu_uid=1850",
+  "engine": "other",
+  "ref": "mnu_uid=1850",
+  "note": "성주군청 금수문화공원야영장 자체 예약(예약현황 및 예약하기, 30일 전 09시 오픈)",
+  "source": "research_result_D.json"
+ },
+ "영덕고래불국민야영장|영덕군": {
+  "url": "https://stay.yd.go.kr/pages/sub.htm?nav_code=gor1501675800",
+  "engine": "other",
+  "ref": "",
+  "note": "영덕군 stay.yd.go.kr 자체 온라인예약(24시간 내 미결제 취소)",
+  "source": "research_result_D.json"
+ },
+ "영양청소년수련원캠핑장|영양군": {
+  "url": "https://www.yyg.go.kr/np/camping/reserve",
+  "engine": "other",
+  "ref": "",
+  "note": "영양군 생태공원사업소 자체 예약시스템(yyg.go.kr/np)",
+  "source": "research_result_D.json"
+ },
+ "보현산별빛테마마을야영장|영천군": {
+  "url": "https://tickets.interpark.com/goods/18012813",
+  "engine": "interpark",
+  "ref": "18012813",
+  "note": "영천시시설관리공단 → 인터파크 티켓(야영장·글램핑장 예약하기)",
+  "source": "research_result_D.json"
+ },
+ "삼강나루캠핑장|예천군": {
+  "url": "https://booking.ddnayo.com/booking-calendar-status?accommodationId=13543",
+  "engine": "ddnayo",
+  "ref": "13543",
+  "note": "떠나요닷컴 예약 달력",
+  "source": "research_result_D.json"
+ },
+ "곤충나라사과테마파크 오토캠핑장|예천군": {
+  "url": "https://www.applecamp.co.kr/Rooms",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지 applecamp.co.kr '예약하기'(fetch 시 DNS 실패, 엔진 미확인); 예천군 페이지는 전화 054-650-6295만 안내",
+  "source": "research_result_D.json"
+ },
+ "청송오토캠핑장|청송군": {
+  "url": "https://cscamping.co.kr/reservation/reserinfo",
+  "engine": "other",
+  "ref": "",
+  "note": "산소파크 글램핑 청송오토캠핑장 자체 홈페이지 실시간예약 모듈",
+  "source": "research_result_D.json"
+ },
+ "칠곡보 오토캠핑장|칠곡군": {
+  "url": "https://camp.xticket.kr/web/main?shopEncode=3b8dfd4fe83ef398626319d169929b5df473aafca57da427af869db901ce8b86",
+  "engine": "other",
+  "ref": "xticket shopEncode=3b8dfd4f...",
+  "note": "엑스티켓(camp.xticket.kr) 실시간예약",
+  "source": "research_result_D.json"
+ },
+ "달서별빛캠핑장|대구시": {
+  "url": "https://camp.xticket.kr/web/main?shopEncode=f27ad3485cf140b64341e2cc975c376d14561a12aca07349ae393d97379882c7",
+  "engine": "other",
+  "ref": "xticket shopEncode=f27ad348...",
+  "note": "달서별빛캠프(dalseocamp.kr) → 엑스티켓 예약, 전월 2일 14시 오픈(구민 1일)",
+  "source": "research_result_D.json"
+ },
+ "팔공산파계야영장|대구시": {
+  "url": "https://yeyak.daegu.go.kr/yeyak/camp/campListView.do?memId=B0000015",
+  "engine": "other",
+  "ref": "memId=B0000015",
+  "note": "대구광역시 통합예약시스템(캠핑장 예약, JS 렌더링으로 상세 확인 불가); 당일예약 불가",
+  "source": "research_result_D.json"
+ },
+ "압화산 참살이 숲 야영장|울산시": {
+  "url": "https://www.junggu.ulsan.kr/camping/camp/iphwa/intro.do?searchCsId=CP_SPEC_000000000003",
+  "engine": "other",
+  "ref": "CP_SPEC_000000000003",
+  "note": "울산 중구 야영장 통합운영시스템(입화산 참살이숲 야영장, 추첨+선착순)",
+  "source": "research_result_D.json"
+ },
+ "대왕암 공원캠핑장|울산시": {
+  "url": "https://daewangam.donggu.ulsan.kr/camping/Pmreservation.do",
+  "engine": "other",
+  "ref": "",
+  "note": "울산 동구청 대왕암공원 캠핑장 자체 시스템(사전예약 추첨 매월 1~7일 + 즉시결제)",
+  "source": "research_result_D.json"
+ },
+ "상소 오토 캠핑장|대전시": {
+  "url": "http://www.sangsocamping.kr/reservation.asp?location=001",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지(ASP) 예약·결제 시스템, 매월 1일 10시 익월 오픈; 원격 443 접속거부로 페이지 미검증",
+  "source": "research_result_C.json"
+ },
+ "전월산국민여가캠핑장|세종시": {
+  "url": "https://sjfmc.moonhwain.net:451/rsvc/rsv_srm.html?b_id=jeonwolsan",
+  "engine": "other",
+  "ref": "b_id=jeonwolsan",
+  "note": "세종시설관리공단 → 문화인(moonhwain) 예약시스템(캠핑장 전용계정); 구 forest.maketicket GD98은 종료",
+  "source": "research_result_C.json"
+ },
+ "합강 캠핑장|세종시": {
+  "url": "https://sjfmc.moonhwain.net:451/rsvc/rsv_srm.html?b_id=hapgang",
+  "engine": "other",
+  "ref": "b_id=hapgang",
+  "note": "세종시설관리공단 → 문화인(moonhwain) 예약시스템; 구 forest.maketicket.co.kr/ticket/GD100",
+  "source": "research_result_C.json"
+ },
+ "청자촌 오토캠핑장|강진군": {
+  "url": "http://gjcamping.co/",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지(그누보드) 예약안내, 네이버예약 언급 있음; SSL 만료로 실제 예약 링크 미검증 (061-434-9939)",
+  "source": "research_result_C.json"
+ },
+ "배알도 야영장|광양시": {
+  "url": "https://camfit.co.kr/camp/69a92b20d44d09001d539b91",
+  "engine": "camfit",
+  "ref": "69a92b20d44d09001d539b91",
+  "note": "2026.3 개장 '배알도 별빛야영장', 캠핏 단일 채널, 화·수 휴무",
+  "source": "research_result_C.json"
+ },
+ "무안황토갯벌랜드|무안군": {
+  "url": "https://www.muan.go.kr/getbol/camping_ground/online_reservation/live_reservation",
+  "engine": "other",
+  "ref": "",
+  "note": "무안군 자체 실시간예약(getbol 하위사이트), 인터넷 사전예약 전용/당일은 전화",
+  "source": "research_result_C.json"
+ },
+ "무안회산백련지오토캠핑장|무안군": {
+  "url": "https://www.muan.go.kr/lotus/camping/caravan_reservation",
+  "engine": "other",
+  "ref": "",
+  "note": "무안군 자체 시스템(lotus 하위사이트) 카라반/야영장 예약",
+  "source": "research_result_C.json"
+ },
+ "영암국민여가캠핑장|영암군": {
+  "url": "https://www.yeongam.go.kr/home/ok/camping/info",
+  "engine": "other",
+  "ref": "",
+  "note": "영암군 홈페이지 자체 온라인실시간예약(고캠핑 기준); 인증서 오류로 예약 경로 미검증, /home/ok/camping/reservation 은 404",
+  "source": "research_result_C.json"
+ },
+ "완도명사십리캠핑장|완도군": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=1579",
+  "engine": "thankq",
+  "ref": "cseq=1579",
+  "note": "땡큐캠핑; 자체 도메인 wandocamping.co.kr, 카라반파크 병행",
+  "source": "research_result_C.json"
+ },
+ "심천공원오토캠핑장|장흥군": {
+  "url": "https://www.jangheung.go.kr/jhcamp/reserve/autocamp",
+  "engine": "other",
+  "ref": "",
+  "note": "장흥군 자체 예약(카라반/데크/토굴하우스 분리), 무통장입금 확정",
+  "source": "research_result_C.json"
+ },
+ "운림삼별초공원|진도군": {
+  "url": "https://www.jindo.go.kr/sambyeolcho/",
+  "engine": "other",
+  "ref": "",
+  "note": "진도풍경오토캠핑장(27면), 진도군 자체 홈페이지 온라인실시간예약; 서버 헤더 오류로 예약 경로 미검증",
+  "source": "research_result_C.json"
+ },
+ "땅끝오토캠핑리조트|해남군": {
+  "url": "https://autocamp.haenam.go.kr/glamping/reserve.html?pid=25",
+  "engine": "other",
+  "ref": "",
+  "note": "해남군 자체 시스템(회원가입 후 예약, 익일 17시까지 입금), 1개월 전 오픈",
+  "source": "research_result_C.json"
+ },
+ "땅끝황도나라테마촌|해남군": {
+  "url": "https://hwangtocamping.com/",
+  "engine": "other",
+  "ref": "",
+  "note": "해남군 자체 실시간예약(autocamp와 동일 벤더 추정), SSL 오류로 미검증; 카라반은 autocamp.haenam.go.kr에서 접수",
+  "source": "research_result_C.json"
+ },
+ "무녀도캠핑장|군산시": {
+  "url": "https://www.mndcamp.com/resv",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지 실시간예약(mcamp.kr 동일 사이트)",
+  "source": "research_result_C.json"
+ },
+ "청암산 오토캠핑장|군산시": {
+  "url": "https://golohas.kr/reservation",
+  "engine": "other",
+  "ref": "",
+  "note": "자체 홈페이지 간편예약(기관 승인형)",
+  "source": "research_result_C.json"
+ },
+ "김제모악산캠핑장|김제시": {
+  "url": "https://www.gimje.go.kr/reserve/index.gimje?menuCd=DOM_000001808005000000",
+  "engine": "other",
+  "ref": "",
+  "note": "김제시 통합예약시스템(김제 모악산 캠핑파크)",
+  "source": "research_result_C.json"
+ },
+ "백두대간국민여가캠핑장|남원시": {
+  "url": "https://www.namwon.go.kr/reserve/index.do",
+  "engine": "other",
+  "ref": "",
+  "note": "남원시 통합예약포털 > 숙박·캠핑 > 백두대간생태체험교육장(캠핑장1~31, 에코롯지, 트리하우스); 매월 1일 09시 익월 오픈",
+  "source": "research_result_C.json"
+ },
+ "고산문화공원 무궁화오토캠핑장|완주군": {
+  "url": "http://camp.wanju.go.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "완주군 자체 예약 사이트(9is CMS); 원격 접속거부로 예약 경로 미검증",
+  "source": "research_result_C.json"
+ },
+ "웅포관광지 캠핑장|익산군": {
+  "url": "https://camping.iksan.go.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "익산시 자체 예약(ASP), 인터넷 전용·매월 1일 오픈·24h 내 무통장; 조회 시점 502",
+  "source": "research_result_C.json"
+ },
+ "정읍국민여가캠핑장|정읍시": {
+  "url": "http://www.jeongeup.go.kr/reserve/index.jeongeup?menuCd=DOM_000001207001000000",
+  "engine": "other",
+  "ref": "",
+  "note": "정읍시 통합예약(실명인증 후 예약, 24h 내 결제)",
+  "source": "research_result_C.json"
+ },
+ "진안국제캠핑장|진안군": {
+  "url": "https://camfit.co.kr/camp/612dd5475fd18f001e3399fe",
+  "engine": "camfit",
+  "ref": "612dd5475fd18f001e3399fe",
+  "note": "캠핏 주채널; 땡큐캠핑 cseq=17605, camplink.co.kr/?camp=jyd52, 네이버카페 병행",
+  "source": "research_result_C.json"
+ },
+ "김녕성세기해변야영장|제주시": {
+  "url": "선착순",
+  "engine": "",
+  "ref": "",
+  "note": "마을청년회 운영, 현장 수거함 접수, 온라인 예약 없음",
+  "source": "research_result_C.json"
+ },
+ "인삼골자연휴양림|금산군": {
+  "url": "https://camp.xticket.kr/web/main?shopEncode=15e1aaac36257a8e149e7dbb83f15fc65715e5f3d4b7687daf6165ce78c5ccf7",
+  "engine": "other",
+  "ref": "xticket",
+  "note": "실제명 '인삼골오토캠핑장'(제원면, 55면); 엑스티켓(camp.xticket.kr) 예약, 매월 첫째 금요일 09시 익월 오픈",
+  "source": "research_result_C.json"
+ },
+ "당진 난지도국민여가캠핑장|당진군": {
+  "url": "https://camping.dpto.or.kr/sub3/3_2.php",
+  "engine": "other",
+  "ref": "",
+  "note": "당진도시공사 자체 예약시스템(전화예약 불가)",
+  "source": "research_result_C.json"
+ },
+ "당진왜목오토캠핑장|당진군": {
+  "url": "https://camping.dpto.or.kr/sub3/3_3.php",
+  "engine": "other",
+  "ref": "",
+  "note": "당진도시공사 자체 예약시스템, 매월 1일 09시 선착순",
+  "source": "research_result_C.json"
+ },
+ "당진해양캠핑공원(삽교호캠핑장)|당진군": {
+  "url": "https://camping.dpto.or.kr/sub3/3_1.php",
+  "engine": "other",
+  "ref": "",
+  "note": "당진도시공사 자체 예약시스템(인터넷 전용)",
+  "source": "research_result_C.json"
+ },
+ "예당관광지 국민여가캠핑장|예산군": {
+  "url": "https://camping.yesan.go.kr/prog/fclty/camping/sub01_02/calendar.do",
+  "engine": "other",
+  "ref": "",
+  "note": "예산군 자체 캠핑예약 사이트 달력",
+  "source": "research_result_C.json"
+ },
+ "석갱이오토캠핑장|태안군": {
+  "url": "전화예약",
+  "engine": "",
+  "ref": "",
+  "note": "전화예약만(08~20시, 010-6787-0455), 입금 후 문자 확정; 홈페이지는 그누보드 안내용",
+  "source": "research_result_C.json"
+ },
+ "괴강국민여가캠핑장|괴산군": {
+  "url": "https://jwyccamp.kr/",
+  "engine": "other",
+  "ref": "",
+  "note": "직영 실시간예약 사이트(조회시 DNS 미해석); 괴산군 안내 홈페이지는 cafe.naver.com/goethecamp, ggcamp.com은 파킹됨",
+  "source": "research_result_C.json"
+ },
+ "다리안관광지|단양군": {
+  "url": "https://camp.dytc.or.kr/dytc/camping/G24526799",
+  "engine": "other",
+  "ref": "G24526799",
+  "note": "단양관광공사 통합예약(미리해 mirihae 솔루션), 매월 1일 09시 오픈, 20분 내 결제",
+  "source": "research_result_C.json"
+ },
+ "소선암 캠핑장|단양군": {
+  "url": "https://camp.dytc.or.kr/dytc/camping/Q49993865",
+  "engine": "other",
+  "ref": "Q49993865",
+  "note": "단양관광공사 통합예약(미리해 mirihae 솔루션)",
+  "source": "research_result_C.json"
+ },
+ "금산국민여가캠핑장|영동군": {
+  "url": "http://www.xn--jj0bv76ax6ehwhz2i.com/",
+  "engine": "other",
+  "ref": "",
+  "note": "금산군 '예약바로가기' → 금산캠핑장.com 자체 도메인(인삼골과 같은 xticket 추정, SSL 오류로 미검증); 소재지 충남 금산군(영동군 아님), 화~토 운영",
+  "source": "research_result_C.json"
+ },
+ "송호국민관광단지|영동군": {
+  "url": "선착순",
+  "engine": "",
+  "ref": "",
+  "note": "예약 없음, 선착순 현장 입장(043-740-3228), 4/1~11월 운영, 비오토캠핑",
+  "source": "research_result_C.json"
+ },
+ "원남테마공원캠핑장|음성군": {
+  "url": "https://wonnamcamp.kr/mitem/camping",
+  "engine": "other",
+  "ref": "",
+  "note": "휴일엔(huiln.com) 플랫폼 기반 자체 도메인 온라인예약, 월·화 휴장",
+  "source": "research_result_C.json"
+ },
+ "용두산오토캠핑장|제천시": {
+  "url": "전화예약",
+  "engine": "",
+  "ref": "",
+  "note": "고캠핑 예약방법 '전화'; 그누보드 자체 홈페이지, SSL 불일치로 예약 메뉴 미검증",
+  "source": "research_result_C.json"
+ },
+ "충북대천문체험학교캠핑장|진천군": {
+  "url": "https://m.thankqcamping.com/resv/view.hbb?cseq=2800",
+  "engine": "thankq",
+  "ref": "cseq=2800",
+  "note": "땡큐캠핑 온라인 전용",
+  "source": "research_result_C.json"
+ },
+ "문암생태공원|청주시": {
+  "url": "https://forest.maketicket.co.kr/ticket/GD30",
+  "engine": "other",
+  "ref": "GD30",
+  "note": "메이크티켓(Smartix) 예약; 청주시 munam.cheongju.go.kr 예약하기에서 연결",
+  "source": "research_result_C.json"
+ },
+ "오창미래지농촌테마공원|청주시": {
+  "url": "https://forest.maketicket.co.kr/ticket/GD97",
+  "engine": "other",
+  "ref": "GD97",
+  "note": "메이크티켓(Smartix) 예약; munam.cheongju.go.kr/ochang/reservation/reserve.jsp에서 연결, 48h 내 입금",
+  "source": "research_result_C.json"
+ }
+}
