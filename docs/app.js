@@ -77,7 +77,8 @@ function evaluate(camp, nights) {
   const est = estimatePeriodPrice(camp, nights[0], addDays(nights[nights.length - 1], 1));
   const base = { camp, est, sites: [], availableSites: [], minPrice: null };
   if (!a || a.status === 'unsupported') return { ...base, status: MANUAL_STATUS[camp.platform] || 'manual' };
-  if (a.status === 'error' || a.status === 'unmapped') return { ...base, status: 'err', error: a.error, fetchedAt: a.fetchedAt };
+  if (a.status === 'unmapped') return { ...base, status: MANUAL_STATUS[camp.platform] || 'manual', error: a.error }; // 플랫폼 내 ID 미확인 → 직접확인
+  if (a.status === 'error') return { ...base, status: 'err', error: a.error, fetchedAt: a.fetchedAt };
   const win = a.coverage || state.avail.window;
   const inWindow = !win || (nights[0] >= win.from && nights[nights.length - 1] <= win.to);
   // 플랫폼은 응답했지만 판매 기간 밖 등으로 사이트 정보가 전혀 없는 경우
