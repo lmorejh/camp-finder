@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name "camp-finder-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/data
+          git add docs/data/availability.json data/cache
           git diff --cached --quiet && echo "변경 없음" && exit 0
           git commit -m "chore: 예약 현황 갱신 $(date -u +'%Y-%m-%dT%H:%MZ')"
           git push
