@@ -106,6 +106,54 @@ for (let i = headerIdx + 1; i < rows.length; i++) {
   if (!c.priceWeekday && priceWeekday) c.priceWeekday = priceWeekday;
 }
 
+// ---- 추가 시트(data/source/campsites-extra*.xlsx): 헤더 이름으로 열을 찾고, 이름이 같은 캠핑장은 빈 칸만 보충, 새 캠핑장은 추가 ----
+const normName = (s) => clean(s).replace(/\([^)]*\)/g, '').replace(/[\s·・\-_]/g, '');
+const existingByName = new Map([...camps.values()].map((c) => [normName(c.name), c]));
+let extraAdded = 0, extraFilled = 0;
+for (const file of fs.readdirSync(path.join(ROOT, 'data/source')).filter((f) => /^campsites-extra.*\.xlsx$/i.test(f))) {
+  const xwb = XLSX.readFile(path.join(ROOT, 'data/source', file));
+  for (const sn of xwb.SheetNames) {
+    const xr = XLSX.utils.sheet_to_json(xwb.Sheets[sn], { header: 1, defval: '' });
+    const hi = xr.findIndex((r) => clean(r[0]) === '캠핑장이름');
+    if (hi < 0) continue;
+    const H = xr[hi].map(clean);
+    const col = (names) => H.findIndex((h) => names.some((n) => h.replace(/\s/g, '').includes(n)));
+    const C = { name: 0, province: col(['시,도', '시도']), city: col(['관할지자체']), kind: col(['성격']), form: col(['형태']), wk: col(['주말가격']), wd: col(['주중가격']), site: col(['예약사이트', '홈페이지']), winter: col(['동계운영']), env: col(['기타', '환경']), pet: col(['애견']), fac: col(['개별편의시설']), season: col(['추천계절']) };
+    const g = (r, k) => (C[k] >= 0 ? clean(r[C[k]]) : '');
+    for (const r of xr.slice(hi + 1)) {
+      const name = g(r, 'name');
+      if (!name) continue;
+      const kind = g(r, 'kind'), wk = num(g(r, 'wk')), wd = num(g(r, 'wd')), site = g(r, 'site');
+      if (!kind && !wk && !wd && !site) continue; // 캠핑장 정보가 없는 행(여행기 등)
+      const cur = existingByName.get(normName(name));
+      if (cur) {
+        for (const [k, v] of [['environment', g(r, 'env')], ['winter', g(r, 'winter')], ['pet', g(r, 'pet')], ['privateFacility', g(r, 'fac')], ['season', g(r, 'season')], ['siteForm', g(r, 'form')]]) {
+          if (!cur[k] && v) { cur[k] = v; extraFilled++; }
+        }
+        if (!cur.priceWeekend && wk) { cur.priceWeekend = wk; extraFilled++; }
+        if (!cur.priceWeekday && wd) { cur.priceWeekday = wd; extraFilled++; }
+        continue;
+      }
+      const city = g(r, 'city');
+      const key = `${name}|${city}`;
+      const ov = OVERRIDES[key];
+      const bookingRaw = ov && ov.url ? ov.url : site;
+      const platform = detectPlatform(bookingRaw);
+      const c = {
+        id: 'c' + crypto.createHash('sha1').update(key).digest('hex').slice(0, 8),
+        name, province: g(r, 'province'), city, kind, siteForm: g(r, 'form'), environment: g(r, 'env'), season: g(r, 'season'),
+        priceWeekend: wk, priceWeekday: wd, bookingRaw, sheetBooking: site, bookingNote: ov?.note || '',
+        platform: platform.id, platformName: platform.name, bookingUrl: platform.url, platformRef: platform.ref,
+        pet: g(r, 'pet'), privateFacility: g(r, 'fac'), winter: g(r, 'winter'), videos: [], source: file,
+      };
+      camps.set(key, c);
+      existingByName.set(normName(name), c);
+      extraAdded++;
+    }
+  }
+}
+if (extraAdded || extraFilled) console.log(`추가 시트: 신규 ${extraAdded}곳, 보충 필드 ${extraFilled}개`);
+
 const list = [...camps.values()].map((c) => {
   c.videos.sort((a, b) => String(b.date).localeCompare(String(a.date)));
   const pc = buildProsCons(c);

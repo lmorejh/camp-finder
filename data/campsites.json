@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-10T10:58:55.630Z",
+ "generatedAt": "2026-09-21T05:38:29.208Z",
  "source": "campsites.xlsx",
  "count": 394,
  "campsites": [
@@ -2355,7 +2355,7 @@
    "platformRef": "",
    "pet": "일부사이트가능",
    "privateFacility": "",
-   "winter": "",
+   "winter": "동계개장",
    "videos": [
     {
      "date": "2024-06-21",
@@ -6043,7 +6043,7 @@
    "environment": "카페품은캠핑장,전망좋음",
    "season": "봄가을좋음",
    "priceWeekend": 70000,
-   "priceWeekday": null,
+   "priceWeekday": 50000,
    "bookingRaw": "https://www.camfit.co.kr/camp/60c720c5d5987e001ed2d293",
    "sheetBooking": "https://www.camfit.co.kr/camp/60c720c5d5987e001ed2d293",
    "bookingNote": "",
@@ -6053,7 +6053,7 @@
    "platformRef": "60c720c5d5987e001ed2d293",
    "pet": "애견불가",
    "privateFacility": "",
-   "winter": "",
+   "winter": "동계개장",
    "videos": [
     {
      "date": "2022-12-23",
@@ -6063,7 +6063,8 @@
    ],
    "pros": [
     "카페품은캠핑장,전망좋음",
-    "봄·가을에 최적"
+    "봄·가을에 최적",
+    "겨울에도 운영"
    ],
    "cons": [
     "반려견 동반 불가",
@@ -9426,7 +9427,7 @@
    "platformRef": "16706",
    "pet": "애견불가",
    "privateFacility": "",
-   "winter": "",
+   "winter": "동계개장",
    "videos": [
     {
      "date": "2023-07-28",
@@ -9437,7 +9438,7 @@
    "pros": [
     "수도권 대형 캠핑장",
     "봄·가을에 최적",
-    "국공립 시설의 합리적 요금(주말 28,000원)"
+    "겨울에도 운영"
    ],
    "cons": [
     "반려견 동반 불가"

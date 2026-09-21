@@ -51,6 +51,7 @@ node scraper/run.mjs --ids c786abe01 --limit 5
 ## 구조
 ```
 data/source/campsites.xlsx   원본 시트
+data/source/campsites-extra*.xlsx 추가 시트(이름이 같은 캠핑장은 빈 칸만 보충, 새 캠핑장은 추가)
 scripts/build-campsites.mjs  시트 → data/campsites.json, docs/data/campsites.json (플랫폼 감지, 장단점 생성)
 scripts/pros-cons.mjs        장단점 규칙
 scraper/platforms.mjs        예약 URL/문구 → 플랫폼 식별
