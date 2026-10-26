@@ -1,0 +1,46 @@
+name: 예약 현황 갱신 (캠핑지도 추가 캠핑장)
+
+# 캠핑지도(map.campingjido.com)에서 추가된 캠핑장 중 실시간 조회를 지원하는 예약 플랫폼(네이버 예약·캠핑톡·떠나요·땡큐캠핑 등)을
+# 3시간마다 조회해 docs/data/availability-ext.json을 갱신합니다. 대상이 시트 캠핑장보다 많아 30분 주기 작업과 분리했습니다.
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: '오늘부터 며칠치 조회'
+        default: '45'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-ext
+  cancel-in-progress: false
+
+jobs:
+  refresh-ext:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: 캠핑장 목록 재생성
+        run: npm run build:data
+      - name: 예약 현황 수집(추가 캠핑장)
+        env:
+          CF_WINDOW_DAYS: ${{ github.event.inputs.window_days || '45' }}
+          CF_CONCURRENCY: '3'
+        run: node scraper/run.mjs --tier ext
+      - name: 커밋 & 푸시
+        run: |
+          git config user.name "camp-finder-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/availability-ext.json
+          git diff --cached --quiet && echo "변경 없음" && exit 0
+          git commit -m "chore: 추가 캠핑장 예약 현황 갱신 $(date -u +'%Y-%m-%dT%H:%MZ')"
+          for i in 1 2 3; do git pull --rebase -q && git push && exit 0; sleep 10; done; exit 1
