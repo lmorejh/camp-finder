@@ -9,6 +9,16 @@
 - 캠핑장마다 **장점 2~3개 / 단점 1~2개**를 함께 표시합니다.
 - 실시간 조회를 지원하지 않는 예약 방식(자체 홈페이지·네이버 카페·전화)은 **직접확인**으로 표시하고 링크를 제공합니다.
 
+## 목록
+- 시트 캠핑장 394곳(요금·장단점·예약처 조사) + **캠핑지도(map.campingjido.com) 전국 캠핑장** 병합 = 약 4,170곳
+- `node scripts/fetch-campingjido.mjs` → `data/source/campingjido.json`(운영 중인 캠핑장, 좌표·주소·예약 URL·시설)
+- 시트 캠핑장 좌표: `scripts/geocode-core.mjs` → `data/coords.json`(네이버 검색 API, 키는 환경변수)
+- 병합 규칙: `scripts/merge-sources.mjs` (이름 유사도 + 거리로 시트 캠핑장과 매칭, 나머지는 `tier: ext`로 추가)
+- 추가 캠핑장 중 실시간 조회 가능한 곳은 `.github/workflows/refresh-ext.yml`이 3시간마다 `docs/data/availability-ext.json`에 갱신
+
+## iOS 앱
+`app/` — Google 지도 기반 아이폰 전용 앱. 데이터는 이 저장소의 GitHub Pages(`docs/data`)에서 받아 목록이 바뀌어도 재설치가 필요 없습니다. 자세한 내용은 [app/README.md](app/README.md).
+
 ## 사용 방법
 
 ### 1) 웹(GitHub Pages)

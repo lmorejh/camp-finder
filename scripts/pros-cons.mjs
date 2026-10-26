@@ -9,6 +9,11 @@ export function buildProsCons(c) {
 
   // 1) 환경 메모(유튜버가 직접 남긴 한 줄 평)를 최우선 장점으로
   if (env) pros.push(env.length > 40 ? env.slice(0, 40) + '…' : env);
+  else if (c.intro) pros.push(c.intro.length > 40 ? c.intro.slice(0, 40) + '…' : c.intro);
+  // 캠핑지도 시설 정보: 주변 환경·특색 시설
+  if (!env && c.envTags?.length) pros.push(c.envTags.slice(0, 3).join('·') + ' 인접');
+  const special = (c.features || []).filter((f) => ['수영장', '글램핑', '카라반', '놀이시설', '체험'].includes(f));
+  if (special.length) pros.push(special.slice(0, 3).join('·') + ' 운영');
 
   // 2) 추천 계절
   if (/4계절/.test(c.season)) pros.push('사계절 이용 추천');
@@ -41,7 +46,7 @@ export function buildProsCons(c) {
   if (/마사토/.test(form)) cons.push('마사토 바닥: 우천 시 진흙·배수 취약');
   else if (/^데크$/.test(form)) cons.push('데크 규격에 따라 대형 텐트 설치 제한');
   if (c.platform === 'closed') cons.unshift('폐업/운영 중단 정보 있음');
-  if (!env && !c.season) cons.push('상세 후기 정보 부족');
+  if (!env && !c.season && !c.intro) cons.push('상세 후기 정보 부족');
 
   return { pros: pros.slice(0, 3), cons: cons.slice(0, 2) };
 }

@@ -1,5 +1,7 @@
 // 전체(또는 선택) 캠핑장의 예약 현황을 수집해 docs/data/availability.json 으로 저장
-// 사용법: node scraper/run.mjs [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--platform camfit,knps] [--ids c123,c456] [--limit N]
+// 사용법: node scraper/run.mjs [--tier core|ext] [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--platform camfit,knps] [--ids c123,c456] [--limit N]
+//   --tier core(기본): 시트 캠핑장 → docs/data/availability.json (30분 주기)
+//   --tier ext: 캠핑지도에서 추가된 캠핑장 → docs/data/availability-ext.json (3시간 주기)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,18 +25,21 @@ const concurrency = Number(process.env.CF_CONCURRENCY || 3);
 const { campsites } = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/campsites.json'), 'utf8'));
 const adapters = await loadAdapters();
 
-let targets = campsites.filter((c) => adapters[c.platform]);
+const tier = args.tier === 'ext' ? 'ext' : 'core';
+let targets = campsites.filter((c) => adapters[c.platform] && (c.tier || 'core') === tier);
 if (onlyPlatforms) targets = targets.filter((c) => onlyPlatforms.includes(c.platform));
 if (onlyIds) targets = targets.filter((c) => onlyIds.includes(c.id));
 targets = targets.slice(0, limit);
 
 console.error(`조회 대상 ${targets.length}곳, 기간 ${from} ~ ${to}, 어댑터: ${Object.keys(adapters).join(', ')}`);
 
-const outPath = path.join(ROOT, 'docs/data/availability.json');
+const outPath = path.join(ROOT, tier === 'ext' ? 'docs/data/availability-ext.json' : 'docs/data/availability.json');
 let prev = { camps: {} };
 try { prev = JSON.parse(fs.readFileSync(outPath, 'utf8')); } catch {}
 
-const results = { ...prev.camps };
+// 목록에서 빠진 캠핑장(또는 다른 tier로 옮겨진 캠핑장)의 예전 결과는 버림
+const keep = new Set(campsites.filter((c) => (c.tier || 'core') === tier).map((c) => c.id));
+const results = Object.fromEntries(Object.entries(prev.camps || {}).filter(([id]) => keep.has(id)));
 await prefetchAll(adapters, targets, from, to);
 let i = 0;
 async function worker() {
