@@ -7,6 +7,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { detectPlatform } from '../scraper/platforms.mjs';
 import { buildProsCons } from './pros-cons.mjs';
+import { mergeSources } from './merge-sources.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -154,6 +155,11 @@ for (const file of fs.readdirSync(path.join(ROOT, 'data/source')).filter((f) => 
 }
 if (extraAdded || extraFilled) console.log(`추가 시트: 신규 ${extraAdded}곳, 보충 필드 ${extraFilled}개`);
 
+// ---- 좌표 + 캠핑지도(map.campingjido.com) 목록 병합 ----
+const mg = mergeSources(camps, { root: ROOT, detectPlatform, overrides: OVERRIDES });
+console.log(`캠핑지도: 시트와 매칭 ${mg.matched}곳, 신규 ${mg.added}곳(중복 ${mg.dropped}건 제외), 좌표 없는 시트 캠핑장 ${mg.coreWithoutCoords?.length ?? '-'}곳`);
+if (mg.coreWithoutCoords?.length) console.log('  좌표 없음:', mg.coreWithoutCoords.join(', '));
+
 const list = [...camps.values()].map((c) => {
   c.videos.sort((a, b) => String(b.date).localeCompare(String(a.date)));
   const pc = buildProsCons(c);
@@ -161,11 +167,14 @@ const list = [...camps.values()].map((c) => {
 });
 
 const out = { generatedAt: new Date().toISOString(), source: path.basename(SRC), count: list.length, campsites: list };
-for (const p of ['data/campsites.json', 'docs/data/campsites.json']) {
+for (const [p, indent] of [['data/campsites.json', 1], ['docs/data/campsites.json', 0]]) {
   fs.mkdirSync(path.dirname(path.join(ROOT, p)), { recursive: true });
-  fs.writeFileSync(path.join(ROOT, p), JSON.stringify(out, null, 1));
+  fs.writeFileSync(path.join(ROOT, p), JSON.stringify(out, null, indent || undefined));
 }
+// App checks this small file to decide whether to download the list again (hash of the list, not generatedAt).
+const hash = crypto.createHash('sha1').update(JSON.stringify(list)).digest('hex').slice(0, 12);
+fs.writeFileSync(path.join(ROOT, 'docs/data/version.json'), JSON.stringify({ campsites: hash, count: list.length, core: list.filter((c) => c.tier === 'core').length }));
 const byPlatform = {};
 for (const c of list) byPlatform[c.platform] = (byPlatform[c.platform] || 0) + 1;
-console.log(`campsites: ${list.length}`);
+console.log(`campsites: ${list.length} (시트 ${list.filter((c) => c.tier === 'core').length} + 캠핑지도 ${list.filter((c) => c.tier === 'ext').length})`);
 console.log(byPlatform);

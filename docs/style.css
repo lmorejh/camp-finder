@@ -71,3 +71,4 @@ tr.avail td { background: color-mix(in srgb, var(--ok-bg) 50%, transparent); }
   .right { text-align: left; }
   .pc { grid-template-columns: 1fr; }
 }
+.more { display: block; width: 100%; padding: 12px; font-weight: 600; color: var(--accent); }

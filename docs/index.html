@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>캠핑장 예약 통합 조회</title>
-<meta name="description" content="전국 국공립·사설 캠핑장 394곳의 예약 가능 여부를 기간별로 한 번에 조회합니다. 사이트별 요금·크기·장단점 표시.">
+<meta name="description" content="전국 국공립·사설 캠핑장 4,000여 곳의 예약 가능 여부를 기간별로 한 번에 조회합니다. 사이트별 요금·크기·장단점 표시.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css?v=20260910d">
+<link rel="stylesheet" href="style.css?v=20261026a">
 </head>
 <body>
 <header class="top">
@@ -56,7 +56,7 @@
 <footer class="wrap foot">
   <p>상태 설명 — <b class="st ok">예약가능</b>: 선택 기간 전체 예약 가능한 사이트가 1개 이상 · <b class="st full">만실</b>: 기간 내 빈 사이트 없음 · <b class="st manual">직접확인</b>: 온라인 예약은 있으나 자동 조회 미지원 · <b class="st manual">캠핏 차단</b>: 캠핏이 자동 조회를 차단해 링크만 제공 · <b class="st unknown">카페예약·전화예약·현장선착순·운영종료</b>: 온라인 달력 없음 · <b class="st err">조회오류</b>: 플랫폼 응답 실패.</p>
   <p>요금은 각 플랫폼 응답값을 우선 표시하며, 없으면 시트의 주말/주중 요금(금·토·공휴일 전날=주말)으로 추정합니다. 실제 결제 금액과 다를 수 있습니다.</p>
-  <p>원본 목록: 포토라이TV 전국 국공립·지자체 캠핑장 모음 · <a href="https://github.com/lmorejh/camp-finder" id="repoLink">GitHub 저장소</a></p>
+  <p>원본 목록: 포토라이TV 전국 국공립·지자체 캠핑장 모음 + 캠핑지도(map.campingjido.com) 전국 캠핑장 · <a href="https://github.com/lmorejh/camp-finder" id="repoLink">GitHub 저장소</a></p>
 </footer>
 
 <template id="cardTpl">
@@ -83,6 +83,6 @@
   </article>
 </template>
 
-<script type="module" src="app.js?v=20260910e"></script>
+<script type="module" src="app.js?v=20261026a"></script>
 </body>
 </html>

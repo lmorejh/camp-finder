@@ -1,7 +1,8 @@
 import { toISO, addDays, nightsBetween, estimatePeriodPrice, sumSitePrice, siteAvailableAll, won, isWeekendNight } from './pricing.js?v=20260910c';
 
 const $ = (s) => document.querySelector(s);
-const state = { camps: [], avail: { camps: {} }, live: false, lastLive: null };
+const PAGE = 120; // cards rendered at once (the list has 4,000+ campsites)
+const state = { camps: [], avail: { camps: {} }, live: false, lastLive: null, limit: PAGE };
 
 // ---------- 데이터 로딩 ----------
 async function loadJSON(url) {
@@ -28,6 +29,13 @@ async function init() {
   } catch {
     state.avail = { camps: {}, generatedAt: null };
   }
+  // Campsites added from campingjido are refreshed by a separate 3-hour job (availability-ext.json).
+  try {
+    const ext = await loadJSON('data/availability-ext.json');
+    for (const [id, r] of Object.entries(ext.camps || {})) state.avail.camps[id] = { ...r, coverage: r.coverage || ext.window };
+    state.avail.adapters = [...new Set([...(state.avail.adapters || []), ...(ext.adapters || [])])];
+    state.avail.extGeneratedAt = ext.generatedAt;
+  } catch {}
   // 로컬 서버(실시간 API)가 있는지 확인
   try {
     const r = await fetch('/api/availability?probe=1', { method: 'GET' });
@@ -63,11 +71,12 @@ function bind() {
     $('#' + id).addEventListener('change', () => {
       if (id === 'province') fillCities();
       if (id === 'checkIn' && $('#checkOut').value <= $('#checkIn').value) $('#checkOut').value = addDays($('#checkIn').value, 1);
+      state.limit = PAGE;
       render();
     });
   }
   let t;
-  $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(render, 150); });
+  $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => { state.limit = PAGE; render(); }, 150); });
   $('#btnLive').addEventListener('click', liveFetch);
 }
 
@@ -138,7 +147,7 @@ function render() {
     .filter((c) => !f.pet || /가능/.test(c.pet))
     .filter((c) => !f.winter || /동계개장/.test(c.winter))
     .filter((c) => !f.onlyLive || liveSet.has(c.platform))
-    .filter((c) => !f.q || [c.name, c.environment, c.province, c.city, c.kind, c.platformName].join(' ').toLowerCase().includes(f.q))
+    .filter((c) => !f.q || [c.name, c.environment, c.intro, c.address, c.province, c.city, c.kind, c.platformName, ...(c.features || []), ...(c.envTags || [])].join(' ').toLowerCase().includes(f.q))
     .map((c) => (nights.length ? evaluate(c, nights) : { camp: c, status: MANUAL_STATUS[c.platform] || 'manual', est: null, sites: [], availableSites: [] }));
   if (f.onlyAvailable) rows = rows.filter((r) => r.status === 'ok');
   if (f.hideFull) rows = rows.filter((r) => r.status !== 'full');
@@ -165,7 +174,14 @@ function render() {
   root.innerHTML = '';
   if (!rows.length) { root.innerHTML = '<p class="empty">조건에 맞는 캠핑장이 없습니다.</p>'; return; }
   const frag = document.createDocumentFragment();
-  for (const r of rows) frag.append(card(r, nights));
+  for (const r of rows.slice(0, state.limit)) frag.append(card(r, nights));
+  if (rows.length > state.limit) {
+    const more = document.createElement('button');
+    more.className = 'more';
+    more.textContent = `\uB354 \uBCF4\uAE30 (${(rows.length - state.limit).toLocaleString('ko-KR')})`;
+    more.addEventListener('click', () => { state.limit += PAGE; render(); });
+    frag.append(more);
+  }
   root.append(frag);
 }
 
@@ -173,7 +189,7 @@ function card(r, nights) {
   const { camp: c } = r;
   const el = $('#cardTpl').content.firstElementChild.cloneNode(true);
   el.querySelector('.name').textContent = c.name;
-  const tags = [c.province + (c.city ? ' ' + c.city : ''), c.kind, c.siteForm, c.pet, c.winter, c.privateFacility].filter(Boolean);
+  const tags = [c.province + (c.city ? ' ' + c.city : ''), c.kind, c.siteForm, c.pet, c.winter, c.privateFacility, ...(c.features || []).slice(0, 4)].filter(Boolean);
   const liveSet = new Set(state.avail.adapters || []);
   el.querySelector('.tags').innerHTML = tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('') + `<span class="tag ${liveSet.has(c.platform) ? 'live' : ''}">${esc(c.platformName)}${liveSet.has(c.platform) ? ' · 실시간' : ''}</span>`;
   const st = el.querySelector('.status');
@@ -193,6 +209,8 @@ function card(r, nights) {
   if (c.bookingUrl) links.push(`<a href="${esc(c.bookingUrl)}" target="_blank" rel="noopener">예약 페이지 ↗</a>`);
   else if (c.bookingRaw) links.push(`<span class="note">예약: ${esc(c.bookingRaw)}</span>`);
   if (c.bookingNote) links.push(`<span class="note" title="예약처 조사 메모">ℹ ${esc(c.bookingNote.length > 70 ? c.bookingNote.slice(0, 70) + '…' : c.bookingNote)}</span>`);
+  if (c.lat != null) links.push(`<a href="https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lng}" target="_blank" rel="noopener">\uD83D\uDCCD ${esc(c.address || '\uC9C0\uB3C4')}</a>`);
+  if (c.tel) links.push(`<a href="tel:${esc(c.tel)}">\u260E ${esc(c.tel)}</a>`);
   for (const v of c.videos.filter((v) => v.url).slice(0, 2)) links.push(`<a href="${esc(v.url)}" target="_blank" rel="noopener">▶ 포토라이TV 영상${v.date ? ' (' + v.date.slice(0, 7) + ')' : ''}</a>`);
   if (c.videos.some((v) => v.food)) links.push(`<span class="note">🍳 ${esc(c.videos.map((v) => v.food).filter(Boolean).slice(0, 2).join(' / '))}</span>`);
   el.querySelector('.links').innerHTML = links.join('');

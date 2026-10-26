@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+.env*.local
+*.tsbuildinfo
+.metro-health-check*
+/ios
+/android
+.DS_Store
