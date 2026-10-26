@@ -39,3 +39,8 @@ npx eas-cli build --profile preview --platform ios
 - Google Maps iOS 키는 EAS 환경변수 `GOOGLE_MAPS_IOS_API_KEY`(preview·production)에 있습니다. 키는 번들 ID
   `com.lmorejh.campfinder`로 제한돼 있습니다.
 - 새 아이폰은 `eas device:create`로 등록한 뒤 다시 빌드해야 설치됩니다.
+
+## 설치 페이지
+
+`app/install/worker.mjs` — Cloudflare Worker `camp-finder-install`. 무작위 경로(`INSTALL_PATH`)에 "아이폰에 설치" 버튼을 보여주고 EAS IPA를 프록시합니다.
+새 IPA를 빌드하면 `--var IOS_IPA_URL:<EAS 아티팩트 URL>`로 다시 배포하세요(경로는 저장소에 넣지 않음).
