@@ -16,13 +16,16 @@ interface Props {
 const WEEK = ['일', '월', '화', '수', '목', '금', '토'];
 const MONTHS = 7;
 
-function monthDays(year: number, month: number): (string | null)[] {
+/** Weeks of the month (Sunday first), each exactly 7 cells; null = blank. */
+export function monthWeeks(year: number, month: number): (string | null)[][] {
   const first = new Date(year, month, 1);
   const days = new Date(year, month + 1, 0).getDate();
   const cells: (string | null)[] = Array(first.getDay()).fill(null);
   for (let d = 1; d <= days; d++) cells.push(toISO(new Date(year, month, d)));
   while (cells.length % 7) cells.push(null);
-  return cells;
+  const weeks: (string | null)[][] = [];
+  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+  return weeks;
 }
 
 export function DateSheet({ visible, checkIn, checkOut, liveUntil, onClose, onApply }: Props) {
@@ -40,7 +43,7 @@ export function DateSheet({ visible, checkIn, checkOut, liveUntil, onClose, onAp
     const now = new Date();
     return Array.from({ length: MONTHS }, (_, i) => {
       const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
-      return { key: `${d.getFullYear()}-${d.getMonth()}`, year: d.getFullYear(), month: d.getMonth(), cells: monthDays(d.getFullYear(), d.getMonth()) };
+      return { key: `${d.getFullYear()}-${d.getMonth()}`, year: d.getFullYear(), month: d.getMonth(), weeks: monthWeeks(d.getFullYear(), d.getMonth()) };
     });
   }, []);
 
@@ -94,8 +97,9 @@ export function DateSheet({ visible, checkIn, checkOut, liveUntil, onClose, onAp
               <Text style={styles.monthTitle}>
                 {m.year}년 {m.month + 1}월
               </Text>
-              <View style={styles.grid}>
-                {m.cells.map((iso, i) => {
+              {m.weeks.map((week, w) => (
+              <View key={w} style={styles.week7}>
+                {week.map((iso, i) => {
                   if (!iso) return <View key={i} style={styles.cell} />;
                   const past = iso < today;
                   const isStart = iso === start;
@@ -104,7 +108,7 @@ export function DateSheet({ visible, checkIn, checkOut, liveUntil, onClose, onAp
                   const dow = fromISO(iso).getDay();
                   return (
                     <Pressable key={iso} disabled={past} onPress={() => pick(iso)} style={styles.cell}>
-                      <View style={[inRange && styles.range, (isStart || isEnd) && styles.picked]}>
+                      <View style={[styles.dayBox, inRange && styles.range, (isStart || isEnd) && styles.picked]}>
                         <Text
                           style={[
                             styles.day,
@@ -121,6 +125,7 @@ export function DateSheet({ visible, checkIn, checkOut, liveUntil, onClose, onAp
                   );
                 })}
               </View>
+              ))}
             </View>
           )}
         />
@@ -140,11 +145,14 @@ const styles = StyleSheet.create({
   week: { flex: 1, textAlign: 'center', fontSize: 12, fontWeight: '600', color: colors.muted },
   month: { paddingHorizontal: 12, paddingTop: 12 },
   monthTitle: { ...type.heading, fontSize: 16, paddingHorizontal: 8, paddingBottom: 6 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap' },
-  cell: { width: `${100 / 7}%`, height: 46, alignItems: 'center', justifyContent: 'center' },
-  range: { backgroundColor: colors.primarySoft, borderRadius: 12, width: 42, height: 40, alignItems: 'center', justifyContent: 'center' },
-  picked: { backgroundColor: colors.primaryInk, borderRadius: 14, width: 42, height: 40, alignItems: 'center', justifyContent: 'center' },
-  day: { fontSize: 16, color: colors.ink, textAlign: 'center', lineHeight: 40, width: 42 },
+  // Explicit 7-cell rows with flex: 1 (percentage widths + flexWrap can round past 100% and
+  // push Saturday onto the next line, which shifts every date under the wrong weekday).
+  week7: { flexDirection: 'row' },
+  cell: { flex: 1, height: 46, alignItems: 'center', justifyContent: 'center' },
+  dayBox: { width: 40, height: 40, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
+  range: { backgroundColor: colors.primarySoft, borderRadius: 12 },
+  picked: { backgroundColor: colors.primaryInk },
+  day: { fontSize: 16, color: colors.ink, textAlign: 'center' },
   pickedText: { color: '#FFFFFF', fontWeight: '800' },
   past: { color: '#C8CFCA' },
   sun: { color: '#D46A7E' },
