@@ -42,8 +42,14 @@ const keep = new Set(campsites.filter((c) => (c.tier || 'core') === tier).map((c
 const results = Object.fromEntries(Object.entries(prev.camps || {}).filter(([id]) => keep.has(id)));
 await prefetchAll(adapters, targets, from, to);
 let i = 0;
+// CF_MAX_MINUTES: stop starting new campsites after this many minutes and save what we have, so a
+// slow platform can't push the job past its timeout (a cancelled job saves nothing).
+const maxMinutes = Number(process.env.CF_MAX_MINUTES || 0);
+const deadline = maxMinutes > 0 ? Date.now() + maxMinutes * 60000 : Infinity;
+let skipped = 0;
 async function worker() {
   while (i < targets.length) {
+    if (Date.now() > deadline) { skipped = targets.length - i; i = targets.length; break; }
     const camp = targets[i++];
     const r = await fetchCamp(adapters, camp, from, to);
     results[camp.id] = r;
@@ -52,6 +58,7 @@ async function worker() {
   }
 }
 await Promise.all(Array.from({ length: concurrency }, worker));
+if (skipped) console.error(`time limit ${maxMinutes} min: ${skipped} campsites skipped (previous results kept)`);
 
 const platformSummary = {};
 for (const r of Object.values(results)) {
