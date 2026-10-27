@@ -33,6 +33,7 @@ jobs:
         env:
           CF_WINDOW_DAYS: ${{ github.event.inputs.window_days || '60' }}
           CF_CONCURRENCY: '3'
+          CF_MAX_MINUTES: '32' # save partial results before the job timeout
         run: npm run scrape
       - name: 커밋 & 푸시
         run: |
@@ -42,4 +43,4 @@ jobs:
           git diff --cached --quiet && echo "변경 없음" && exit 0
           git commit -m "chore: 예약 현황 갱신 $(date -u +'%Y-%m-%dT%H:%MZ')"
           # refresh-ext.yml may push at the same time: rebase and retry
-          for i in 1 2 3; do git pull --rebase -q && git push && exit 0; sleep 10; done; exit 1
+          for i in 1 2 3; do git pull --rebase --autostash -q && git push && exit 0; sleep 10; done; exit 1
