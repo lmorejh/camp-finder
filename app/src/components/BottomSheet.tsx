@@ -13,6 +13,8 @@ interface Props {
   header: ReactNode;
   children: ReactNode;
   peekHeight: number;
+  /** Distance from the top of the screen to the fully open sheet (keeps it below the search/filter bar). */
+  topOffset?: number;
   onSnap?: (snap: SheetSnap) => void;
 }
 
@@ -21,16 +23,16 @@ interface Props {
  * content below can scroll freely without fighting the gesture.
  */
 export const BottomSheet = forwardRef<BottomSheetHandle, Props>(function BottomSheet(
-  { header, children, peekHeight, onSnap },
+  { header, children, peekHeight, topOffset, onSnap },
   ref,
 ) {
   const { height: screenH } = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const sheetH = screenH - insets.top - 12;
+  const sheetH = screenH - (topOffset ?? insets.top + 12);
 
   // translateY offsets for each stop (0 == fully open)
   const stops = useMemo(
-    () => [sheetH - peekHeight - insets.bottom, sheetH - Math.round(screenH * 0.48), 0],
+    () => [sheetH - peekHeight - insets.bottom, Math.max(0, sheetH - Math.round(screenH * 0.48)), 0],
     [sheetH, peekHeight, insets.bottom, screenH],
   );
   const y = useRef(new Animated.Value(stops[0])).current;

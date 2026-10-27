@@ -42,6 +42,9 @@ export function MapScreen() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [region, setRegion] = useState<MapRegion>(KOREA_REGION);
   const [iosStyleOn, setIosStyleOn] = useState(false);
+  // Height of the search + filter bar; the fully open sheet stops just below it so its header
+  // (drag handle, close button) is never hidden behind the bar.
+  const [topBarH, setTopBarH] = useState(insets.top + 110);
   const centeredOnUser = useRef(false);
 
   const nights = useMemo(() => nightsBetween(checkIn, checkOut), [checkIn, checkOut]);
@@ -187,7 +190,11 @@ export function MapScreen() {
         )}
       </MapView>
 
-      <View style={[styles.top, { paddingTop: insets.top + 8 }]} pointerEvents="box-none">
+      <View
+        style={[styles.top, { paddingTop: insets.top + 8 }]}
+        pointerEvents="box-none"
+        onLayout={(e) => setTopBarH(Math.round(e.nativeEvent.layout.height))}
+      >
         <View style={styles.searchWrap}>
           <SearchBar value={query} onChangeText={setQuery} focused={searching} onFocus={() => setSearching(true)} onCancel={closeSearch} />
         </View>
@@ -208,6 +215,7 @@ export function MapScreen() {
       <BottomSheet
         ref={sheetRef}
         peekHeight={PEEK}
+        topOffset={topBarH + 8}
         header={
           selected ? (
             <CampDetailHeader
